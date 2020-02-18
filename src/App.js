@@ -1,23 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import Login from  './components/login/Login.tsx';
+import Menu from './components/menu/Menu';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Bienvenidos a la super tienda de tazas y rollos.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        </a>
-      </header>
+      <Menu />
+      <div className="Body"><p>Aquí va el body-content</p></div>
+      <Login />
     </div>
   );
 }
