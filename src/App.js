@@ -1,19 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import Login from  './components/login/Login.tsx';
-import Menu from './components/menu/Menu';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
+import Login from  './components/login/Login'
+import Menu from './components/menu/Menu'
+import Articles from './components/articles/Articles'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
 
 function App() {
   return (
-    <div className="App">
-      <i class="fas fa-home" />
+    <React-Fragment>
       <Menu />
-      <div className="Body"><p>Aquí va el body-content</p></div>
-      <i class="fab fa-font-awesome"></i>
-      <Login />
-    </div>
-  );
+        <Switch>
+          <Route path='/login' component={Login}></Route>
+          <Route path='/shop' component={Articles}></Route>
+        </Switch>
+    </React-Fragment>
+  )
 }
 
-export default App;
+export default App
