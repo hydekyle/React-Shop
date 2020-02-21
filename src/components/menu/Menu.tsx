@@ -1,10 +1,5 @@
 import React from 'react'
 
-interface MenuProps {
-    status: boolean
-    counter: number
-}
-
 const myStyle = {
     color: 'red',
     background: 'blue',
@@ -12,6 +7,11 @@ const myStyle = {
     'justify-content': 'center',
     'align-items': 'baseline',
     'font-size': '60px'
+}
+
+interface MenuProps {
+    status: boolean
+    counter: number
 }
 
 export class Menu extends React.Component<MenuProps, any> {
@@ -30,14 +30,12 @@ export class Menu extends React.Component<MenuProps, any> {
         })
     }
 
-    
-
     render() {
         this.incrementCount = this.incrementCount.bind(this);
         return (
             <div className='Menu' style={myStyle}>
                 <i className="fas fa-home" />
-                <h1>Home</h1>
+                <h1>TazaLoca.com</h1>
             </div>
         ); 
     }
