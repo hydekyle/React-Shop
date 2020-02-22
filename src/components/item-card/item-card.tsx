@@ -20,6 +20,7 @@ const myStyleName = {
 }
 
 const myStyleImg = {
+    margin: 'auto'
 }
 
 const myStyleDesc = {
