@@ -4,9 +4,9 @@ const myStyle = {
     color: 'red',
     background: 'blue',
     display: 'flex',
-    'justify-content': 'center',
-    'align-items': 'baseline',
-    'font-size': '60px'
+    justifyContent: 'center',
+    alignItems: 'baseline',
+    fontSize: '60px'
 }
 
 interface MenuProps {
@@ -43,6 +43,3 @@ export class Menu extends React.Component<MenuProps, any> {
 }
 
 export default Menu
-
-
-{/* <button onClick={this.incrementCount}>{this.state.counter}</button> */}

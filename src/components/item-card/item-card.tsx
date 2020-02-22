@@ -4,19 +4,19 @@ const myStyleBody = {
     display: 'flex',
     border: '2px solid black',
     width: '200px',
-    'flex-direction': 'column',
-    'background-color': 'white',
-    'border-radius': '12px',
-    'margin-top': '10px',
-    'margin-bottom': '10px',
-    'margin-left': '10px',
-    'margin-right': '10px',
-}
+    flexDirection: "column",
+    backgroundColor: 'white',
+    borderRadius: '12px',
+    marginTop: '10px',
+    marginBottom: '10px',
+    marginLeft: '10px',
+    marginRight: '10px',
+} as React.CSSProperties
 
 const myStyleName = {
     color: 'black',
     margin: 'auto',
-    'margin-bottom': '20px'
+    marginBottom: '20px'
 }
 
 const myStyleImg = {
@@ -26,7 +26,7 @@ const myStyleImg = {
 const myStyleDesc = {
     color: 'grey',
     margin: 'auto',
-    'margin-bottom': '10px'
+    marginBottom: '10px'
 }
 
 interface ItemProps {
@@ -45,6 +45,22 @@ export class ItemCard extends React.Component<ItemProps, any> {
             img: props.img
         }
         
+    }
+
+    componentDidMount() {
+        fetch("https://api.adviceslip.com/advice")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log(result)
+                    this.setState({
+                        description: result.slip.advice
+                    })
+                },
+                (err) => {
+                    console.log(`¡¡Error: ${err}!!`)
+                }
+            )
     }
 
     render() {
