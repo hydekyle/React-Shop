@@ -7,15 +7,20 @@ import ItemCard from '../ItemCard'
 configure({ adapter: new Adapter() })
 
 describe('ItemCard', () => {
+
+    const wrapper = shallow(
+        <ItemCard 
+            description=''
+            name=''
+            img=''
+        />)
+
     describe('BeforeFetch', () => {
-        test('Check initial value', () => {
-            const wrapper = shallow(
-            <ItemCard 
-                description=''
-                name=''
-                img=''
-            />)
+        test('Check initial value', () => {    
             expect(wrapper.find('h2').text()).toBe('')
+        })
+        test('Check api json', () => {
+            
         })
     })
 })

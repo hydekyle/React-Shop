@@ -1,4 +1,6 @@
 import React from 'react'
+import '../../controllers/Api'
+import MyApi from '../../controllers/Api'
 
 const myStyleBody = {
     display: 'flex',
@@ -48,20 +50,13 @@ export class ItemCard extends React.Component<ItemProps, any> {
     }
 
     componentDidMount() {
-        fetch("https://api.adviceslip.com/advice")
-            .then(res => res.json())
-            .catch(err => console.log(err))
-            .then(
-                (result) => {
-                    console.log(result)
-                    this.setState({
-                        description: result.slip.advice
-                    })
-                },
-                (err) => {
-                    console.log(`¡¡Error: ${err} !!`)
-                }
-            )
+        MyApi.fetchRandomAdvice().then(
+            (result) => {
+                this.setState({
+                    description: result
+                })
+            }
+        )
     }
 
     render() {
