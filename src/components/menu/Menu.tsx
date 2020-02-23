@@ -35,7 +35,8 @@ export class Menu extends React.Component<MenuProps, any> {
         return (
             <div className='Menu' style={myStyle}>
                 <i className="fas fa-home" />
-                <h1>TazaLoca.com</h1>
+                <h1>{this.state.counter}</h1>
+                <button onClick={() => this.incrementCount()}>No tengo nada</button>
             </div>
         ); 
     }

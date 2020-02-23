@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import Login from  './components/login/Login'
 import Menu from './components/menu/Menu'
 import Articles from './components/articles/Articles'
-import ItemCard from './components/item-card/item-card'
+import ItemCard from './components/item-card/ItemCard'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
