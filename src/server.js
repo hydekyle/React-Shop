@@ -1,3 +1,4 @@
+const usersRouter = require("./api/products/index.ts")
 const express = require("express")
 const morgan = require("morgan")
 const compression = require("compression")
@@ -11,15 +12,5 @@ app.use(express.json());
 app.use(morgan("combined"));
 app.use(compression());
 
-const router = express.Router()
-
-router.get("/test", (req, res) => {
-    res.send("Hola test")
-})
-
-router.get("/", (req, res) => {
-    res.send("Omg")
-})
-
-app.use("/users", router)
+app.use("/users", usersRouter)
 app.listen(8080, () => console.log("Ready on port 8080!"));
