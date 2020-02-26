@@ -1,4 +1,4 @@
-const usersRouter = require("./api/products/index.ts")
+const usersRouter = require("./api/products/index.js")
 const express = require("express")
 const morgan = require("morgan")
 const compression = require("compression")

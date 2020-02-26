@@ -1,6 +1,6 @@
 import React from 'react'
-import '../../controllers/apis'
-import MyApi from '../../controllers/apis'
+import '../../api/apis'
+import { Apis } from '../../api/apis'
 
 const myStyleBody = {
     display: 'flex',
@@ -50,7 +50,7 @@ export class ItemCard extends React.Component<ItemProps, any> {
     }
 
     componentDidMount() {
-        MyApi.fetchRandomAdvice().then(
+        Apis.fetchRandomAdvice().then(
             (result) => {
                 this.setState({
                     description: result
