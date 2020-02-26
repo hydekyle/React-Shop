@@ -6,11 +6,20 @@ const app = express();
 const corsOptions = {
   origin: "http://localhost:3000"
 };
-
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(morgan("combined"));
 app.use(compression());
 
+const router = express.Router()
 
+router.get("/test", (req, res) => {
+    res.send("Hola test")
+})
+
+router.get("/", (req, res) => {
+    res.send("Omg")
+})
+
+app.use("/users", router)
 app.listen(8080, () => console.log("Ready on port 8080!"));

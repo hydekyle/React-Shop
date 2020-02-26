@@ -1,6 +1,6 @@
 import React from 'react'
-import '../../controllers/Api'
-import MyApi from '../../controllers/Api'
+import '../../controllers/apis'
+import MyApi from '../../controllers/apis'
 
 const myStyleBody = {
     display: 'flex',
