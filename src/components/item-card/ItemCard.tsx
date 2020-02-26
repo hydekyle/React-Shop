@@ -1,6 +1,5 @@
 import React from 'react'
-import '../../api/apis'
-import { Apis } from '../../api/apis'
+import * as Apis from '../../api/apis'
 
 const myStyleBody = {
     display: 'flex',

@@ -7,9 +7,8 @@ router.get("/test", (req, res) => {
 })
 
 router.get("/", (req, res) => {
-    controller.getRandomAdvice()
+    controller.get_data()
         .then(val => res.send(val))
-        .catch(err => res.send(err))
 })
 
 module.exports = router
