@@ -1,12 +1,10 @@
-import { resolve } from "url"
-
 let apiURL : RequestInfo = "https://api.adviceslip.com/advice"
 
 
 export class MyApi {
     static fetchRandomAdvice() : Promise<String> {
         return new Promise(
-            (resolve) => {
+            (resolve, reject) => {
                 fetch(apiURL)
                     .then(res => res.json())
                     .then(
@@ -14,7 +12,7 @@ export class MyApi {
                             resolve(result.slip.advice)
                         },
                         (error) => {
-                            console.warn(`¡ApiError ${error}!`)
+                            reject(`¡ApiError ${error}!`)
                         }
                     )
             }
