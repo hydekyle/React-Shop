@@ -1,5 +1,5 @@
 import React from 'react'
-import * as Apis from '../../api/apis'
+const Apis = require("../../api/apis")
 
 const myStyleBody = {
     display: 'flex',
