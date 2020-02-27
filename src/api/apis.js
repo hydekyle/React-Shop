@@ -7,24 +7,6 @@ const get_advice = async function() {
     return json
 }
 
-function fetchRandomAdvice() {
-    return new Promise(
-        (resolve, reject) => {
-            fetch(apiURL)
-                .then(res => res.json())
-                    .then(
-                        (result) => {
-                            resolve(result.slip.advice)
-                        },
-                        (error) => {
-                            reject(`¡ApiError ${error}!`)
-                        }
-                    )
-        }
-    )
-}
-
 module.exports = {
-    fetchRandomAdvice,
     get_advice
 }

@@ -49,10 +49,10 @@ export class ItemCard extends React.Component<ItemProps, any> {
     }
 
     componentDidMount() {
-        Apis.fetchRandomAdvice().then(
+        Apis.get_advice().then(
             (result) => {
                 this.setState({
-                    description: result
+                    description: result.slip.advice
                 })
             }
         )
