@@ -1,5 +1,4 @@
 import React from 'react'
-const Apis = require("../../api/apis")
 
 const myStyleBody = {
     display: 'flex',
@@ -49,13 +48,11 @@ export class ItemCard extends React.Component<ItemProps, any> {
     }
 
     componentDidMount() {
-        Apis.get_advice().then(
-            (result) => {
-                this.setState({
-                    description: result.slip.advice
-                })
-            }
-        )
+        setTimeout(() => {
+            this.setState({
+                description: "Trabajando en el backend"
+            })
+        }, 1000)
     }
 
     render() {

@@ -15,7 +15,6 @@
     "ts-node": "^8.6.2"
   },
   "scripts": {
-    "serve": "ts-node src/server.ts",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
