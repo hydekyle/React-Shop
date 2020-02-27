@@ -15,11 +15,7 @@
     "ts-node": "^8.6.2"
   },
   "scripts": {
-    "serve": "ts-node src/server.ts",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "server": "nodemon src/server.ts"
   },
   "eslintConfig": {
     "extends": "react-app"
