@@ -1,4 +1,5 @@
 import React from 'react'
+import { get_user } from '../../controller/Api'
 
 const myStyleBody = {
     display: 'flex',
@@ -48,11 +49,12 @@ export class ItemCard extends React.Component<ItemProps, any> {
     }
 
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({
-                description: "Trabajando en el backend"
+        get_user("HydeTest")
+            .then(val => {
+                this.setState({
+                    description: val.slip.advice
+                })
             })
-        }, 1000)
     }
 
     render() {
