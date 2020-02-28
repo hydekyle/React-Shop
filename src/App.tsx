@@ -11,7 +11,7 @@ function App() {
   return (
     <div>
       <Menu status={true} counter={0}/>
-      <ItemCard name='TestArticle' description='testing wey' img="https://www.thesun.co.uk/wp-content/uploads/2018/11/cat-2.png"/>
+      <ItemCard/>
         <Switch>
           <Route path='/login' component={Login}></Route>
           <Route path='/shop' component={Articles}></Route>
