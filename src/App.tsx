@@ -6,18 +6,18 @@ import Articles from './components/articles/Articles'
 import ItemCard from './components/item-card/ItemCard'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
+import BoxInput from './components/box-input/BoxInput'
+import {MainProvider} from './Context/MainContext'
 
-function App() {
-  return (
+export default () => 
     <div>
-      <Menu status={true} counter={0}/>
-      <ItemCard/>
-        <Switch>
-          <Route path='/login' component={Login}></Route>
-          <Route path='/shop' component={Articles}></Route>
-        </Switch>
+      <MainProvider>
+        <Menu/>
+        <BoxInput/>
+        <ItemCard/>
+          <Switch>
+            <Route path='/login' component={Login}></Route>
+            <Route path='/shop' component={Articles}></Route>
+          </Switch>
+        </MainProvider>
     </div>
-  )
-}
-
-export default App

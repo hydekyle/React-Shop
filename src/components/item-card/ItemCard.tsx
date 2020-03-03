@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { get_user } from '../../controller/Api'
+import { get_advice } from '../../controller/Api'
 
 interface ItemProps {
     name: string
@@ -7,7 +7,7 @@ interface ItemProps {
     img: string
 }
 
-function useMyHook() {
+export default () => {
     const [props, setProps] = useState<ItemProps>({
         name: "Unloaded",
         description: "",
@@ -16,7 +16,7 @@ function useMyHook() {
 
     useEffect(() => {
         if (props.name === "Unloaded") {
-            get_user("HydeTest")
+            get_advice("HydeTest")
                 .then(val => {
                     setProps({
                         name: "Fetcheado",
@@ -27,17 +27,11 @@ function useMyHook() {
         }
     })
 
-    return props
-}
-
-export default function HydeFunction() {
-    const myHook = useMyHook();
-
     return (
         <div style={myStyleBody}>
-                <h1 style={myStyleName}>{myHook.name}</h1>
-                <img src={myHook.img} alt="" width="180px" height="180px" style={myStyleImg}/>
-                <h2 style={myStyleDesc}>{myHook.description}</h2>
+                <h1 style={myStyleName}>{props.name}</h1>
+                <img src={props.img} alt="" width="180px" height="180px" style={myStyleImg}/>
+                <h2 style={myStyleDesc}>{props.description}</h2>
             </div>
     )
 }
