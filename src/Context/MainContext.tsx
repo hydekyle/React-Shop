@@ -1,22 +1,22 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 
-export interface MainContextInterface {
+export interface ContextInterface {
     counter: number,
     name: string,
     setCounter: Function
 }
 
-const initialContext : MainContextInterface = {
-    counter: 100,
-    name: "TestName",
-    setCounter: (num: number) => {
-      console.log(initialContext.counter)
-      initialContext.counter += num
-    }
-  }
+export const MainContext = React.createContext<ContextInterface | undefined>(undefined)
 
-export const MainContext = React.createContext<MainContextInterface | null>(null)
+export const ContextConsumer = MainContext.Consumer
 
 export function MainProvider(props) {
-    return <MainContext.Provider value={initialContext} {...props} />
+    const [counter, setCounter] = useState(0)
+    const value = useMemo(() => {
+        return ({
+            setCounter,
+            counter
+        })
+    }, [counter])
+    return <MainContext.Provider value={value} {...props} />
 }

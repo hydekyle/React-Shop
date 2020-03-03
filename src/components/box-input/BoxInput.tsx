@@ -1,20 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import {MainContext} from '../../Context/MainContext'
 
-interface Props {
-    counter: number
-}
-
 export default () => {
+    const context = useContext(MainContext)
    return (
        <div>
-           <MainContext.Consumer>
-                {context => (
-                    <button onClick={() => {context?.setCounter(20)}}>
-                        {context?.counter}
-                    </button>
-                )}
-            </MainContext.Consumer>
+           <button onClick={() => context?.setCounter(context.counter + 20)}>Working?</button>
        </div>
    )
 }

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import {MainContext, MainProvider} from '../../Context/MainContext'
+import {MainContext, ContextConsumer} from '../../Context/MainContext'
 
 const myStyle = {
     color: 'red',
@@ -20,8 +20,7 @@ export default () => {
     return (
         <div className='Menu' style={myStyle}>
             <i className="fas fa-home" />
-            <h1>{context?.counter}</h1>
-            <button onClick={() => {context?.setCounter(2)}}>Hyde Botón</button>
+            <h2>{context?.counter}</h2>
         </div>
     )
 }
