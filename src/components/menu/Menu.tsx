@@ -5,7 +5,10 @@ export default () => {
     const context = useContext(MainContext)
     return (
         <div>
-            <Button color="danger">Danger!!</Button>
+            <Button 
+                color="danger"
+                onClick={() => context?.resetCounter()}
+                >Danger!!</Button>
             <CardBody>{context?.counter}</CardBody>
         </div>
     )
