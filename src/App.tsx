@@ -4,10 +4,10 @@ import Login from  './components/login/Login'
 import Menu from './components/menu/Menu'
 import Articles from './components/articles/Articles'
 import ItemCard from './components/item-card/ItemCard'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css'
 import BoxInput from './components/box-input/BoxInput'
 import {MainProvider} from './Context/MainContext'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
 
 export default () => 
     <div>

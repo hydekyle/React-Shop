@@ -8,8 +8,6 @@ export interface ContextInterface {
 
 export const MainContext = React.createContext<ContextInterface | undefined>(undefined)
 
-export const ContextConsumer = MainContext.Consumer
-
 export function MainProvider(props) {
     const [counter, setCounter] = useState(0)
     const value = useMemo(() => {
