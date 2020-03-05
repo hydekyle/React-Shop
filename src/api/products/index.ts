@@ -1,11 +1,16 @@
 const controller = require("./controller")
 import * as express from 'express'
 const router = express.Router()
+const regOnlyCharsAndNumbers = new RegExp('[^A-z|0-9]')
 
-router.get("/test", (req, res) => {
+router.get("/users", (req, res) => {
     const name = req.query["name"]
-    controller.get_db_test(name)
-        .then(val => res.send(val))
+    if (name !== undefined && !regOnlyCharsAndNumbers.test(name)) {
+        controller.get_user(name)
+            .then(val => res.send(val))
+    } else {
+        res.send("Please, provide a valid username")
+    }
 })
 
 router.get("/", (req, res) => {

@@ -5,7 +5,8 @@ export const get_my_advice = async function() {
     return data
 }
 
-export const get_db_test = async (name : String) => {
-    const data = await myApi.get_mongo(name)
+export const get_user = async (name : String) => {
+    let data = await myApi.get_user(name)
+    if (!data) data = "Usuario no encontrado"
     return data
 }

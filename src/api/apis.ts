@@ -15,11 +15,7 @@ export const get_advice = async function() {
     return json
 }
 
-export const get_user = async (user: string) => {
-    return `Hola ${user}` 
-}
-
-export const get_mongo = async (name : String) => {
+export const get_user = async (name : String) => {
     console.log(`Hola ${name}`)
     await mongoose.connect(
         mongo_url, 
