@@ -8,12 +8,7 @@ configure({ adapter: new Adapter() })
 
 describe('ItemCard', () => {
 
-    const wrapper = shallow(
-        <ItemCard 
-            description=''
-            name=''
-            img=''
-        />)
+    const wrapper = shallow(<ItemCard />)
 
     describe('BeforeFetch', () => {
         test('Check initial value', () => {    

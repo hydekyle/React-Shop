@@ -20,7 +20,7 @@ export default () => {
                 .then(val => {
                     setProps({
                         name: "Fetcheado",
-                        description: val.slip.advice,
+                        description: val,
                         img: "https://www.thesun.co.uk/wp-content/uploads/2018/11/cat-2.png"
                     })
                 })

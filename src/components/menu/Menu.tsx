@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
-import {MainContext} from '../../Context/MainContext'
-import { 
-    Button, 
+import { MainContext } from '../../Context/ContextMain'
+import {
     CardBody,
     Navbar,
     NavbarBrand,
@@ -18,19 +17,18 @@ export default () => {
     return (
         <div>
             <Navbar dark={true}>
-            <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
-            <NavbarBrand href="/">Tazas Locas</NavbarBrand>
-            <Collapse isOpen={isOpen} navbar>
-                <Nav className="mr-auto" navbar>
-                    <NavItem>
-                        <NavLink href="/login">Login</NavLink>
-                        <NavLink href="/shop">Shop</NavLink>
-                    </NavItem>
-                </Nav>
-                <CardBody>{context?.counter}</CardBody>
-            </Collapse>
+                <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
+                <NavbarBrand href="/">Tazas Locas</NavbarBrand>
+                <Collapse isOpen={isOpen} navbar>
+                    <Nav className="mr-auto" navbar>
+                        <NavItem>
+                            <NavLink href="/login">Login</NavLink>
+                            <NavLink href="/shop">Shop</NavLink>
+                        </NavItem>
+                    </Nav>
+                    <CardBody>{context?.counter}</CardBody>
+                </Collapse>
             </Navbar>
-            
         </div>
     )
 }

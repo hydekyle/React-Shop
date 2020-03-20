@@ -1,23 +1,27 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import Login from  './components/login/Login'
 import Menu from './components/menu/Menu'
 import ItemCard from './components/item-card/ItemCard'
 import BoxInput from './components/box-input/BoxInput'
 import BannerWelcome from './components/banner-welcome/BannerWelcome'
-import { MainProvider } from './Context/MainContext'
+import GameMoon from './components/game-moons/GameMoons'
+import { MainProvider } from './Context/ContextMain'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
-export default () => 
-    <div>
-      <MainProvider>
-        <Menu/>
-        <BoxInput/>
-        <BannerWelcome/>
-          <Switch>
-            <Route path='/login' component={Login}></Route>
-            <Route path='/shop' component={ItemCard}></Route>
-          </Switch>
-        </MainProvider>
-    </div>
+export default () =>
+  <div>
+    <MainProvider>
+
+
+      <Switch>
+        <Route path='/login'>
+          <Menu />
+          <BoxInput />
+          <BannerWelcome />
+        </Route>
+        <Route path='/shop' component={ItemCard}></Route>
+        <Route path='/moons' component={GameMoon}></Route>
+      </Switch>
+    </MainProvider>
+  </div>
