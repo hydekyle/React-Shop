@@ -4,6 +4,7 @@
   align-items: center;
 }
 .moon-picker {
-  color: red;
-  background: blue;
+  display: flex;
+  flex-direction: row;
+  background-color: yellow;
 }

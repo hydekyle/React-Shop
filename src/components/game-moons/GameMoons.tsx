@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import './GameMoons.css'
+import * as _ from 'lodash'
+
 
 interface Props {
     rows: number
@@ -16,6 +18,8 @@ export default () => {
     })
 
     const moons = ["🌕", "🌖", "🌗", "🌘", "🌑", "🌒", "🌓", "🌔"]
+    const minRows = 1, minColumns = 1
+    const maxRows = 100, maxColumns = 100
 
     const Rotate = (wheelEvent: React.WheelEvent) => {
         if (wheelEvent.deltaY < 0) RotateLeft()
@@ -38,15 +42,52 @@ export default () => {
         })
     }
 
+    const ChangeRows = value => {
+        setProps({
+            columns: props.columns,
+            pointer: props.pointer,
+            rows: _.clamp(props.rows + value, minRows, maxRows)
+        })
+    }
+
+    const ChangeColumns = value => {
+        setProps({
+            rows: props.rows,
+            pointer: props.pointer,
+            columns: _.clamp(props.columns + value, minColumns, maxColumns)
+        })
+    }
+
+    const Canta = value => {
+        console.log(value)
+    }
+
     return (
         <div>
             <div className='box'>
-                {moons.map((index) => {
+                <button onClick={() => ChangeRows(-1)}>Row-</button>
+                <button onClick={() => ChangeRows(1)}>Row+</button>
+                <button onClick={() => ChangeColumns(-1)}>Column-</button>
+                <button onClick={() => ChangeColumns(1)}>Column+</button>
+            </div>
+            <div className='box'>
+                {Array.from(Array(props.rows), (e, rowNumber) => {
                     return <div
-                        key={index}
-                        className="moon-picker"
-                        onWheel={(wheelEvent) => Rotate(wheelEvent)}
-                    >{moons[props.pointer]}</div>
+                        className='moon-picker'
+                        key={rowNumber}
+                        onWheel={(wheelEvent) => Rotate(wheelEvent)}>
+
+                        {
+                            Array.from(Array(props.columns), (e, columnNumber) => {
+                                const myKey = `${rowNumber}|${columnNumber}`
+                                return <div
+                                    key={myKey}
+                                    onClick={() => { Canta(myKey) }}
+                                >{moons[props.pointer]}</div>
+                            })
+                        }
+
+                    </div>
                 })}
             </div>
         </div>
