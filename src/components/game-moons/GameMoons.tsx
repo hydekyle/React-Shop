@@ -28,32 +28,28 @@ export default () => {
 
     const RotateRight = () => {
         setProps({
-            pointer: props.pointer < moons.length - 1 ? props.pointer + 1 : 0,
-            rows: props.rows,
-            columns: props.columns
+            ...props,
+            pointer: props.pointer < moons.length - 1 ? props.pointer + 1 : 0
         })
     }
 
     const RotateLeft = () => {
         setProps({
-            pointer: props.pointer > 0 ? props.pointer - 1 : moons.length - 1,
-            rows: props.rows,
-            columns: props.columns
+            ...props,
+            pointer: props.pointer > 0 ? props.pointer - 1 : moons.length - 1
         })
     }
 
     const ChangeRows = value => {
         setProps({
-            columns: props.columns,
-            pointer: props.pointer,
+            ...props,
             rows: _.clamp(props.rows + value, minRows, maxRows)
         })
     }
 
     const ChangeColumns = value => {
         setProps({
-            rows: props.rows,
-            pointer: props.pointer,
+            ...props,
             columns: _.clamp(props.columns + value, minColumns, maxColumns)
         })
     }
