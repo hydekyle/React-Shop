@@ -1,3 +1,6 @@
+.box {
+  flex-direction: row;
+}
 .puzzle-button-off {
   background-color: red;
   width: 3em;
