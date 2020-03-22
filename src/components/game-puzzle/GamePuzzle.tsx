@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import './GamePuzzle.css'
 import _ from 'lodash'
 
 interface Props {
@@ -33,18 +34,27 @@ export default GamePuzzle => {
         })
     }
 
+    const Clicka = id => {
+        console.log(id)
+    }
+
     return (
         <div>
             {Array.from(Array(props.rows), (e, x) => {
-                return <div key={x}>
+                return <div className='box' key={x}>
                     {
                         Array.from(Array(props.columns), (e, y) => {
-                            let myKey = `${x}|${y}`
-                            return <div key={myKey}>{props.map[myKey]}</div>
+                            const myKey = `${x}|${y}`
+                            const myValue = props.map[myKey]
+                            return (
+                                <div
+                                    key={myKey}
+                                    className={myValue === 1 ? 'puzzle-button-on' : 'puzzle-button-off'}>
+                                </div>
+                            )
                         })
                     }
                 </div>
-
             })}
         </div>
     )

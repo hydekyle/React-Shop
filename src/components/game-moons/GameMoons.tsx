@@ -73,10 +73,13 @@ export default () => {
                         {
                             Array.from(Array(props.columns), (e, columnNumber) => {
                                 const myKey = `${rowNumber}|${columnNumber}`
-                                return <div
-                                    key={myKey}
-                                    onWheel={wheelEvent => RotateMoon(myKey, wheelEvent)}
-                                >{moons[props.map[myKey] === undefined ? 0 : props.map[myKey]]}</div>
+                                return (
+                                    <div
+                                        key={myKey}
+                                        onWheel={wheelEvent => RotateMoon(myKey, wheelEvent)}>
+                                        {moons[props.map[myKey] === undefined ? 0 : props.map[myKey]]}
+                                    </div>
+                                )
                             })
                         }
 
