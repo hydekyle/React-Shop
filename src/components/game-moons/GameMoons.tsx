@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './GameMoons.css'
-import * as _ from 'lodash'
+import _ from 'lodash'
 
 interface Props {
     rows: number
