@@ -24,14 +24,11 @@ let twitter: Twitter = new Twitter(config)
 
 app.get("/twita", (req, res) => {
   console.log("Working " + twitter.VERSION)
-  twitter.get('friends/ids', { screen_name: config.screen_name, count: 100 }, function (err, data) {
-    if (!err && data) {
-      res.render('index', { friends: data })
-    }
-    else {
-      res.send("Wrong shit: " + err.message)
-    }
-  });
+  twitter.post("statuses/update", { status: "Im not a bot" }, (error, tweet, response) => {
+    if (error) res.send(error)
+    console.log(tweet)
+    console.log(response)
+  })
 })
 
 app.listen(8080, () => console.log("Ready on port 8080!"))
