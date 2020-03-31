@@ -22,6 +22,10 @@ app.use("/db", products_router)
 const config = require("./twitter-config")
 let twitter: Twitter = new Twitter(config)
 
+app.get("/testing", (req, res) => {
+  res.send("Hola")
+})
+
 app.get("/twita", (req, res) => {
   console.log("Working " + twitter.VERSION)
   twitter.post("statuses/update", { status: "Hello World!" }, (error, tweet, response) => {
@@ -31,9 +35,12 @@ app.get("/twita", (req, res) => {
   })
 })
 
-twitter.stream("statuses/filter", { track: "#LionFinder" }, stream => {
+twitter.stream("statuses/filter", { track: "#sub" }, stream => {
   stream.on("data", tweet => {
-    console.log(tweet.text)
+    console.log("Alguien dijo: " + tweet.text)
+    twitter.post("friendships/create", { screen_name: tweet.user.screen_name }, (error, tweet, response) => {
+      if (error) console.log(error)
+    })
   })
   stream.on("error", error => {
     console.log(error)
