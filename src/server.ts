@@ -24,10 +24,19 @@ let twitter: Twitter = new Twitter(config)
 
 app.get("/twita", (req, res) => {
   console.log("Working " + twitter.VERSION)
-  twitter.post("statuses/update", { status: "Im not a bot" }, (error, tweet, response) => {
+  twitter.post("statuses/update", { status: "Hello World!" }, (error, tweet, response) => {
     if (error) res.send(error)
     console.log(tweet)
     console.log(response)
+  })
+})
+
+twitter.stream("statuses/filter", { track: "#LionFinder" }, stream => {
+  stream.on("data", tweet => {
+    console.log(tweet.text)
+  })
+  stream.on("error", error => {
+    console.log(error)
   })
 })
 
