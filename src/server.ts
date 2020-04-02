@@ -22,24 +22,17 @@ app.use("/db", products_router)
 const config = require("./twitter-config")
 let twitter: Twitter = new Twitter(config)
 
-app.get("/testing", (req, res) => {
-  res.send("Hola")
-})
-
-app.get("/twita", (req, res) => {
-  console.log("Working " + twitter.VERSION)
-  twitter.post("statuses/update", { status: "Hello World!" }, (error, tweet, response) => {
-    if (error) res.send(error)
-    console.log(tweet)
-    console.log(response)
-  })
-})
-
-twitter.stream("statuses/filter", { track: "#sub" }, stream => {
+twitter.stream("statuses/filter", { track: "#sub4sub" }, stream => {
   stream.on("data", tweet => {
-    console.log("Alguien dijo: " + tweet.text)
+    console.log("NEW TWEET: " + tweet.text)
     twitter.post("friendships/create", { screen_name: tweet.user.screen_name }, (error, tweet, response) => {
       if (error) console.log(error)
+      else {
+        twitter.post("mutes/users/create", { screen_name: tweet.user.screen_name }, (error, response) => {
+          if (error) console.log(error)
+          else console.log("Se ha agregado el nuevo amigo y silenciado.")
+        })
+      }
     })
   })
   stream.on("error", error => {
