@@ -25,7 +25,7 @@ let twitter: Twitter = new Twitter(config)
 twitter.stream("statuses/filter", { track: "#sub4sub" }, stream => {
   stream.on("data", tweet => {
     console.log("NEW TWEET: " + tweet.text)
-    twitter.post("friendships/create", { screen_name: tweet.user.screen_name }, (error, tweet, response) => {
+    twitter.post("friendships/create", { screen_name: tweet.user.screen_name }, (error, response) => {
       if (error) console.log(error)
       else {
         twitter.post("mutes/users/create", { screen_name: tweet.user.screen_name }, (error, response) => {
