@@ -19,25 +19,32 @@ app.use(compression())
 app.use("/db", products_router)
 
 //Twitter Bot
-const config = require("./twitter-config")
-let twitter: Twitter = new Twitter(config)
+const config = {
+  muteAfterFollow: true
+}
+const twitter_keys = require("./twitter-config")
+let twitter: Twitter = new Twitter(twitter_keys)
 
 twitter.stream("statuses/filter", { track: "#sub4sub" }, stream => {
+
   stream.on("data", tweet => {
-    console.log("NEW TWEET: " + tweet.text)
+
     twitter.post("friendships/create", { screen_name: tweet.user.screen_name }, (error, response) => {
       if (error) console.log(error)
-      else {
+      if (!error && config.muteAfterFollow) { //Mute After Follow
         twitter.post("mutes/users/create", { screen_name: tweet.user.screen_name }, (error, response) => {
           if (error) console.log(error)
-          else console.log("Se ha agregado el nuevo amigo y silenciado.")
+          else console.log(`Se ha agregado a ${tweet.user.screen_name}`)
         })
       }
     })
+
   })
+
   stream.on("error", error => {
     console.log(error)
   })
+
 })
 
 app.listen(8080, () => console.log("Ready on port 8080!"))
