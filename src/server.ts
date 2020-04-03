@@ -23,14 +23,17 @@ app.use("/db", products_router)
 //Twitter Bot
 const config = {
   muteAfterFollow: true,
-  lookForFollowers: true
+  lookForFollowers: true,
+  showTweet: true
 }
 const twitter_keys = require("./twitter-config")
 let twitter: Twitter = new Twitter(twitter_keys)
+const tweets_filter = "#sub4sub,#followforfollow,#fyp,#followback"
 
-twitter.stream("statuses/filter", { track: "#sub4sub" }, stream => {
+twitter.stream("statuses/filter", { track: tweets_filter }, stream => {
 
   stream.on("data", tweet => {
+    if (config.showTweet) console.log(tweet.text)
     if (config.lookForFollowers) toFollow(tweet)
   })
 
@@ -39,8 +42,6 @@ twitter.stream("statuses/filter", { track: "#sub4sub" }, stream => {
   })
 
 })
-
-app.listen(PORT, () => console.log(`Ready on port ${PORT}!`))
 
 const toFollow = tweet => {
   twitter.post("friendships/create", { screen_name: tweet.user.screen_name }, (error, response) => {
@@ -52,6 +53,17 @@ const toFollow = tweet => {
 const toMute = tweet => {
   twitter.post("mutes/users/create", { screen_name: tweet.user.screen_name }, (error, response) => {
     if (error) console.warn(error)
-    else console.log(`Muted and Added: ${tweet.user.screen_name}`)
+    else console.log(`Added & Muted: ${tweet.user.screen_name}`)
   })
 }
+
+const CheckFollowers = () => {
+  twitter.get("followers/list", { count: 3, skip_status: true }, (error, response) => {
+    if (error) console.warn(error)
+    else {
+      console.log(response.users)
+    }
+  })
+}
+
+app.listen(PORT, () => console.log(`Ready on port ${PORT}!`))
