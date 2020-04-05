@@ -30,11 +30,18 @@ const twitter_keys = require("./twitter-config")
 let twitter: Twitter = new Twitter(twitter_keys)
 const tweets_filter = "#sub4sub"
 
+let counter_accounts = 0
+let saved_accounts: Array<string> = []
+
+let saveAccount = accountScreenName => {
+  saved_accounts.push(accountScreenName)
+}
+
 twitter.stream("statuses/filter", { track: tweets_filter }, stream => {
 
   stream.on("data", tweet => {
     if (config.showTweet) console.log(tweet.text)
-    if (config.lookForFollowers) toFollow(tweet)
+    if (config.lookForFollowers) saveAccount(tweet.user.screen_name)
   })
 
   stream.on("error", error => {
@@ -43,22 +50,22 @@ twitter.stream("statuses/filter", { track: tweets_filter }, stream => {
 
 })
 
-const toFollow = tweet => {
-  twitter.post("friendships/create", { screen_name: tweet.user.screen_name }, (error, response) => {
+const toFollow = screenName => {
+  twitter.post("friendships/create", { screen_name: screenName }, (error, response) => {
     if (error) console.warn(error)
-    else if (config.muteAfterFollow) toMute(tweet)
+    else if (config.muteAfterFollow) toMute(screenName)
   })
 }
 
-const toMute = tweet => {
-  twitter.post("mutes/users/create", { screen_name: tweet.user.screen_name }, (error, response) => {
+const toMute = screenName => {
+  twitter.post("mutes/users/create", { screen_name: screenName }, (error, response) => {
     if (error) console.warn(error)
-    else console.log(`Added & Muted: ${tweet.user.screen_name}`)
+    else console.log(`Added & Muted: ${screenName}`)
   })
 }
 
-const CheckFollowers = () => {
-  twitter.get("followers/list", { count: 3, skip_status: true }, (error, response) => {
+const toGetLastFollowers = maxNumber => {
+  twitter.get("followers/list", { count: maxNumber, skip_status: true }, (error, response) => {
     if (error) console.warn(error)
     else {
       console.log(response.users)
@@ -66,4 +73,14 @@ const CheckFollowers = () => {
   })
 }
 
-app.listen(PORT, () => console.log(`Ready on port ${PORT}!`))
+app.listen(PORT, () => {
+  console.log(`Ready on port ${PORT}!`)
+  setInterval(() => {
+    checkInterval()
+  }, 60000)
+})
+
+let checkInterval = () => {
+  console.log(`Lets go im check ${saved_accounts.length}`)
+  if (saved_accounts.length > counter_accounts) toFollow(saved_accounts[counter_accounts++])
+}
