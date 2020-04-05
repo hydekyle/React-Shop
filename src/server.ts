@@ -24,11 +24,11 @@ app.use("/db", products_router)
 const config = {
   muteAfterFollow: true,
   lookForFollowers: true,
-  showTweet: true
+  showTweet: false
 }
 const twitter_keys = require("./twitter-config")
 let twitter: Twitter = new Twitter(twitter_keys)
-const tweets_filter = "#sub4sub,#followforfollow,#fyp,#followback"
+const tweets_filter = "#sub4sub"
 
 twitter.stream("statuses/filter", { track: tweets_filter }, stream => {
 
