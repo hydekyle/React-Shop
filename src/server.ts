@@ -77,10 +77,10 @@ app.listen(PORT, () => {
   console.log(`Ready on port ${PORT}!`)
   setInterval(() => {
     checkInterval()
-  }, 60000)
+  }, 60000 * 5)
 })
 
 let checkInterval = () => {
-  console.log(`Lets go im check ${saved_accounts.length}`)
   if (saved_accounts.length > counter_accounts) toFollow(saved_accounts[counter_accounts++])
+  console.log(`Saved: ${saved_accounts.length} | Followed: ${counter_accounts}`)
 }
