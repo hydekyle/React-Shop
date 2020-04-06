@@ -20,16 +20,26 @@ app.use(compression())
 
 app.use("/db", products_router)
 
+for (var pinga of process.argv) {
+  console.log(pinga)
+}
+
 //Twitter Bot
 const config = {
   muteAfterFollow: true,
   lookForFollowers: true,
   showTweet: false
 }
-const twitter_keys = require("./twitter-config")
+
+let GetKeys = () => {
+  return process.argv[2] == "hyde" ?
+    require("./twitter-config").hyde :
+    require("./twitter-config").bot
+}
+const intervalMinutes = 5 //Dejar en 5 minutos o Twitter se cabrea
+const twitter_keys = GetKeys()
 let twitter: Twitter = new Twitter(twitter_keys)
 const tweets_filter = "#sub4sub"
-
 let counter_accounts = 0
 let saved_accounts: Array<string> = []
 
@@ -75,12 +85,16 @@ const toGetLastFollowers = maxNumber => {
 
 app.listen(PORT, () => {
   console.log(`Ready on port ${PORT}!`)
+  console.log(`Starting ${twitter_keys.consumer_key}. Fetching data now.`)
   setInterval(() => {
-    checkInterval()
-  }, 60000 * 5)
+    followLastFollower()
+  }, 60000 * intervalMinutes)
 })
 
-let checkInterval = () => {
-  if (saved_accounts.length > counter_accounts) toFollow(saved_accounts[counter_accounts++])
+let followLastFollower = () => {
+  if (saved_accounts.length > 0) {
+    toFollow(saved_accounts.pop())
+    counter_accounts++
+  }
   console.log(`Saved: ${saved_accounts.length} | Followed: ${counter_accounts}`)
 }

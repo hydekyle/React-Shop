@@ -17,7 +17,9 @@
     "twitter": "^1.7.1"
   },
   "scripts": {
-    "server": "nodemon src/server.ts"
+    "server": "nodemon src/server.ts",
+    "bot": "nodemon src/server.ts",
+    "hyde": "nodemon src/server.ts hyde"
   },
   "eslintConfig": {
     "extends": "react-app"
