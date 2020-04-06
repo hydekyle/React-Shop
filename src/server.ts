@@ -1,6 +1,6 @@
 import * as Twitter from "twitter"
 
-const PORT = 8080
+const PORT = process.argv[3] ? process.argv[3] : 8080
 
 const products_router = require("./api/products/index")
 const express = require("express")

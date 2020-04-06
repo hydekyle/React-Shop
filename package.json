@@ -19,7 +19,7 @@
   "scripts": {
     "server": "nodemon src/server.ts",
     "bot": "nodemon src/server.ts",
-    "hyde": "nodemon src/server.ts hyde"
+    "hyde": "nodemon src/server.ts hyde 8081"
   },
   "eslintConfig": {
     "extends": "react-app"
