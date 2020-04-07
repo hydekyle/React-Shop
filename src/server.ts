@@ -26,32 +26,31 @@ for (var pinga of process.argv) {
 
 //Twitter Bot
 const config = {
-  muteAfterFollow: true,
-  lookForFollowers: true,
-  showTweet: false
+  showTweet: false,
+  replyTweet: true,
+  followTweetOwner: false,
+  muteAfterFollow: true
 }
 
-let GetKeys = () => {
+const GetKeys = () => {
   return process.argv[2] == "hyde" ?
     require("./twitter-config").hyde :
     require("./twitter-config").bot
 }
-const intervalMinutes = 5 //Dejar en 5 minutos o Twitter se cabrea
+
+const intervalMinutes = 5 // Dejar en 5 minutos o Twitter se cabrea
 const twitter_keys = GetKeys()
 let twitter: Twitter = new Twitter(twitter_keys)
-const tweets_filter = "#sub4sub"
+const tweets_filter = "#HydeWick"
 let counter_accounts = 0
 let saved_accounts: Array<string> = []
-
-let saveAccount = accountScreenName => {
-  saved_accounts.push(accountScreenName)
-}
 
 twitter.stream("statuses/filter", { track: tweets_filter }, stream => {
 
   stream.on("data", tweet => {
     if (config.showTweet) console.log(tweet.text)
-    if (config.lookForFollowers) saveAccount(tweet.user.screen_name)
+    if (config.followTweetOwner) saveAccount(tweet.user.screen_name)
+    if (config.replyTweet) toReply(tweet.id_str, tweet.user.screen_name)
   })
 
   stream.on("error", error => {
@@ -59,6 +58,15 @@ twitter.stream("statuses/filter", { track: tweets_filter }, stream => {
   })
 
 })
+
+const toGetLastFollowers = maxNumber => {
+  twitter.get("followers/list", { count: maxNumber, skip_status: true }, (error, response) => {
+    if (error) console.warn(error)
+    else {
+      console.log(response.users)
+    }
+  })
+}
 
 const toFollow = screenName => {
   twitter.post("friendships/create", { screen_name: screenName }, (error, response) => {
@@ -74,13 +82,17 @@ const toMute = screenName => {
   })
 }
 
-const toGetLastFollowers = maxNumber => {
-  twitter.get("followers/list", { count: maxNumber, skip_status: true }, (error, response) => {
-    if (error) console.warn(error)
-    else {
-      console.log(response.users)
-    }
+const toReply = (tweetID: string, tweetOwnerName: string) => {
+  console.log("Tweet Id: " + tweetID)
+  let replyText = `@${tweetOwnerName} Hello! Greetings from Node~`
+  twitter.post("statuses/update", { status: replyText, in_reply_to_status_id: tweetID }, (error, response) => {
+    if (!error) console.log("He respondido a " + tweetOwnerName)
+    else console.warn(error)
   })
+}
+
+const saveAccount = accountScreenName => {
+  saved_accounts.push(accountScreenName)
 }
 
 app.listen(PORT, () => {
