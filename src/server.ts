@@ -22,7 +22,7 @@ app.use("/db", products_router)
 
 //Twitter Bot
 const config = {
-  replyTweet: false, //Careful spam
+  replyTweet: true, //Careful spam
   countryFilter: false,
   showTweet: true,
   followTweetOwner: false,
@@ -37,8 +37,8 @@ const GetKeys = () => {
 }
 
 const countries_filter = ["us", "usa", "united states", "new york", "america"]
-const paid_link = "https://bit.ly/3cc7PML"
-const tweets_filter = "go im out"
+const paid_link = "https://medium.com/@ayozefernndezacosta/t%C3%ADtulo-de-prueba-cbcd6eb57da0"
+const tweets_filter = "goo im out"
 
 const twitter_keys = GetKeys()
 let twitter: Twitter = new Twitter(twitter_keys)
