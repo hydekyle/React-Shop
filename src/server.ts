@@ -22,23 +22,32 @@ app.use("/db", products_router)
 
 //Twitter Bot
 const config = {
-  replyTweet: true, //Careful spam
+  replyTweet: false, //Careful spam
   countryFilter: false,
   showTweet: true,
-  followTweetOwner: false,
-  muteAfterFollow: false,
-  intervalMinutes: 1
+  followTweetOwner: true,
+  muteAfterFollow: true,
+  followIntervalMinutes: 1
+}
+
+const tweets_filter = "#sub4sub"
+const getReplyText = receiverName => {
+  return `@${receiverName} Ser pambisito da mucho askito, pasalo.`
 }
 
 const GetKeys = () => {
-  return process.argv[2] == "hyde" ?
-    require("./twitter-config").hyde :
-    require("./twitter-config").bot
+  let result;
+  switch (process.argv[2]) {
+    case "hyde": result = require("./twitter-config").hyde; break
+    case "asko": result = require("./twitter-config").asko; break
+    default: result = require("./twitter-config").bot
+  }
+  return result
 }
 
 const countries_filter = ["us", "usa", "united states", "new york", "america"]
 const paid_link = "https://medium.com/@ayozefernndezacosta/t%C3%ADtulo-de-prueba-cbcd6eb57da0"
-const tweets_filter = "goo im out"
+
 
 const twitter_keys = GetKeys()
 let twitter: Twitter = new Twitter(twitter_keys)
@@ -110,10 +119,6 @@ const toReply = (tweetID: string, tweetOwnerName: string) => {
   })
 }
 
-const getReplyText = receiverName => {
-  return `@${receiverName} Pilla de estos que te los mandan gratis ${paid_link}`
-}
-
 const saveAccount = accountScreenName => {
   saved_accounts.push(accountScreenName)
 }
@@ -131,6 +136,6 @@ app.listen(PORT, () => {
   console.log(`Starting ${twitter_keys.consumer_key}. Fetching data now.`)
   setInterval(() => {
     followLastFollower()
-  }, 60000 * config.intervalMinutes)
+  }, 60000 * config.followIntervalMinutes)
 })
 
