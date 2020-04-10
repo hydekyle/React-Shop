@@ -1,4 +1,5 @@
 import * as Twitter from "twitter"
+import * as _ from "lodash"
 
 const PORT = process.argv[3] ? process.argv[3] : 8080
 
@@ -30,15 +31,42 @@ const config = {
   muteAfterFollow: false,
   showTweet: true,
   followIntervalMinutes: 1,
-  replyIntervalMinutes: 1
+  replyIntervalMinutes: 0.6 //Perfect fit for 300 tweets/3h API LIMIT
 }
 
-const tweets_filter = "#sub4sub"
+const tweets_filter = "dalasreview"
 const getReplyText = receiverName => {
-  return `@${receiverName} Free and fast! ${config.paid_link}`
+  return `@${receiverName} ${getRandomInsult()}`
 }
 
-const GetKeys = () => {
+const getRandomPambi = () => {
+  let pambi: string = ""
+  switch (_.random(1, 6)) {
+    case 1: pambi = "pambisimio"; break
+    case 2: pambi = "pambiretrasado"; break
+    case 3: pambi = "pambidiota"; break
+    case 4: pambi = "pambimierder"; break
+    default: pambi = "pambisito"
+  }
+  return pambi
+}
+
+const getRandomInsult = () => {
+  let phrase: string = ""
+  switch (_.random(1, 6)) {
+    case 1: phrase = `Si te hacen bulling en el cole tienes más papeletas para ser ${getRandomPambi()}`; break
+    case 2: phrase = `Dalas tiene un verdadero problema mental y su contenido siempre es basura tóxica. Si te gusta eso, eso es lo que eres.`; break
+    case 3: phrase = `A Dalas solo le apoyan niños sin amigos y cuentas fan penosas, planteate tú por qué`; break
+    case 4: phrase = `Debe ser duro ser ${getRandomPambi()}. Bullying en el cole, bullying en Twitter...`; break
+    case 5: phrase = `A los ${getRandomPambi()} hay que echarles de comer a parte.`; break
+    case 6: phrase = `Qué asko me dan los ${getRandomPambi()}`; break
+    case 7: phrase = `He llegado a la conclusión que a los ${getRandomPambi()} les gusta que les insulten`; break
+    default: phrase = `Dalas da mucho asko, pero los pambisitos dan aún más askete.`
+  }
+  return phrase
+}
+
+const getKeys = () => {
   let result;
   switch (process.argv[2]) {
     case "hyde": result = require("./twitter-config").hyde; break
@@ -48,7 +76,7 @@ const GetKeys = () => {
   return result
 }
 
-const twitter_keys = GetKeys()
+const twitter_keys = getKeys()
 let twitter: Twitter = new Twitter(twitter_keys)
 let counter_accounts = 0
 let saved_accounts: Array<TweetData> = []
