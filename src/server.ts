@@ -22,21 +22,41 @@ app.use(compression())
 app.use("/db", products_router)
 
 //Twitter Bot
+const tweets_filter = "dalasreview"
+let filtered_users: Array<string> = []
+let counter_accounts = 0
+let saved_accounts: Array<TweetData> = []
+
+interface TweetData {
+  screen_name: string,
+  tweetID: number
+}
 const config = {
+  paid_link: "",
   countries_filter: ["us", "usa", "united states", "new york", "america"],
   countryFilter: false,
-  paid_link: "https://youtu.be/Rd2m3-gJ1zU",
-  replyTweet: true, //Careful spam
   dontRepeatSameUser: true,
   followTweetOwner: false,
   muteAfterFollow: false,
   showTweet: true,
   followIntervalMinutes: 1,
-  replyIntervalMinutes: 0.1 //Perfect fit for 300 tweets/3h API LIMIT
+  replyIntervalMinutes: 0.6, //Perfect fit for 300 tweets/3h API LIMIT
+  replyTweet: true, //Careful spam
 }
 
-let filtered_users: Array<string> = []
-const tweets_filter = "#finderlion"
+const getKeys = () => {
+  let result;
+  switch (process.argv[2]) {
+    case "hyde": result = require("./twitter-config").hyde; break
+    case "bot": result = require("./twitter-config").bot; break
+    default: result = require("./twitter-config").asko
+  }
+  return result
+}
+
+const twitter_keys = getKeys()
+let twitter: Twitter = new Twitter(twitter_keys)
+
 const getReplyText = receiverName => {
   return `@${receiverName} ${getRandomInsult()}`
 }
@@ -66,26 +86,6 @@ const getRandomInsult = () => {
     default: phrase = `Dalas da mucho asko, pero los ${getRandomPambi()} dan aún más askete.`
   }
   return phrase
-}
-
-const getKeys = () => {
-  let result;
-  switch (process.argv[2]) {
-    case "hyde": result = require("./twitter-config").hyde; break
-    case "asko": result = require("./twitter-config").asko; break
-    default: result = require("./twitter-config").bot
-  }
-  return result
-}
-
-const twitter_keys = getKeys()
-let twitter: Twitter = new Twitter(twitter_keys)
-let counter_accounts = 0
-let saved_accounts: Array<TweetData> = []
-
-interface TweetData {
-  screen_name: string,
-  tweetID: number
 }
 
 twitter.stream("statuses/filter", { track: tweets_filter }, stream => {
@@ -143,6 +143,7 @@ const toReply = (tweetData: TweetData) => {
   let replyText = getReplyText(tweetData.screen_name)
   twitter.post("statuses/update", { status: replyText, in_reply_to_status_id: tweetData.tweetID }, (error, response) => {
     if (!error) {
+      if (filtered_users.length > 100) resetFilteredUsers()
       filtered_users.push(tweetData.screen_name)
       console.log("He respondido a " + tweetData.screen_name)
     }
@@ -188,6 +189,10 @@ const start = () => {
       followLastSaved()
     }, 60000 * config.followIntervalMinutes)
   }
+}
+
+const resetFilteredUsers = () => {
+  filtered_users = []
 }
 
 app.listen(PORT, () => {
