@@ -40,7 +40,7 @@ const config = {
   muteAfterFollow: false,
   showTweet: true,
   followIntervalMinutes: 1,
-  replyIntervalMinutes: 10, //Perfect fit for 300 tweets/3h API LIMIT
+  replyIntervalMinutes: 5, //Perfect fit for 300 tweets/3h API LIMIT
   replyTweet: true, //Careful spam
 }
 
@@ -183,7 +183,7 @@ const start = () => {
   if (config.replyTweet) {
     setInterval(() => {
       replyLastSaved()
-    }, 60000 * config.followIntervalMinutes)
+    }, 60000 * config.replyIntervalMinutes)
   }
   if (config.followTweetOwner) {
     setInterval(() => {
