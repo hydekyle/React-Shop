@@ -27,21 +27,23 @@ const config = {
   countryFilter: false,
   paid_link: "https://youtu.be/Rd2m3-gJ1zU",
   replyTweet: true, //Careful spam
+  dontRepeatSameUser: true,
   followTweetOwner: false,
   muteAfterFollow: false,
   showTweet: true,
   followIntervalMinutes: 1,
-  replyIntervalMinutes: 0.6 //Perfect fit for 300 tweets/3h API LIMIT
+  replyIntervalMinutes: 0.1 //Perfect fit for 300 tweets/3h API LIMIT
 }
 
-const tweets_filter = "dalasreview"
+let filtered_users: Array<string> = []
+const tweets_filter = "#finderlion"
 const getReplyText = receiverName => {
   return `@${receiverName} ${getRandomInsult()}`
 }
 
 const getRandomPambi = () => {
   let pambi: string = ""
-  switch (_.random(1, 6)) {
+  switch (_.random(1, 7)) {
     case 1: pambi = "pambisimio"; break
     case 2: pambi = "pambiretrasado"; break
     case 3: pambi = "pambidiota"; break
@@ -53,15 +55,15 @@ const getRandomPambi = () => {
 
 const getRandomInsult = () => {
   let phrase: string = ""
-  switch (_.random(1, 6)) {
-    case 1: phrase = `Si te hacen bulling en el cole tienes más papeletas para ser ${getRandomPambi()}`; break
+  switch (_.random(0, 8)) {
+    case 1: phrase = `Si te hacen bulling en el cole tienes más papeletas para ser ${getRandomPambi()}.`; break
     case 2: phrase = `Dalas tiene un verdadero problema mental y su contenido siempre es basura tóxica. Si te gusta eso, eso es lo que eres.`; break
-    case 3: phrase = `A Dalas solo le apoyan niños sin amigos y cuentas fan penosas, planteate tú por qué`; break
+    case 3: phrase = `A Dalas solo le apoyan niños sin amigos y cuentas fan penosas, planteate tú por qué.`; break
     case 4: phrase = `Debe ser duro ser ${getRandomPambi()}. Bullying en el cole, bullying en Twitter...`; break
     case 5: phrase = `A los ${getRandomPambi()} hay que echarles de comer a parte.`; break
     case 6: phrase = `Qué asko me dan los ${getRandomPambi()}`; break
-    case 7: phrase = `He llegado a la conclusión que a los ${getRandomPambi()} les gusta que les insulten`; break
-    default: phrase = `Dalas da mucho asko, pero los pambisitos dan aún más askete.`
+    case 7: phrase = `He llegado a la conclusión que a los ${getRandomPambi()} les gusta que les insulten.`; break
+    default: phrase = `Dalas da mucho asko, pero los ${getRandomPambi()} dan aún más askete.`
   }
   return phrase
 }
@@ -132,9 +134,18 @@ const toMute = screenName => {
 }
 
 const toReply = (tweetData: TweetData) => {
+  for (let name of filtered_users) {
+    if (name == tweetData.screen_name) {
+      console.log("Evitando responder al mismo")
+      return
+    }
+  }
   let replyText = getReplyText(tweetData.screen_name)
   twitter.post("statuses/update", { status: replyText, in_reply_to_status_id: tweetData.tweetID }, (error, response) => {
-    if (!error) console.log("He respondido a " + tweetData.screen_name)
+    if (!error) {
+      filtered_users.push(tweetData.screen_name)
+      console.log("He respondido a " + tweetData.screen_name)
+    }
     else console.warn(error)
   })
 }
