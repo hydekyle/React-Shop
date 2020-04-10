@@ -83,7 +83,7 @@ const getRandomInsult = () => {
     case 5: phrase = `A los ${getRandomPambi()}s hay que echarles de comer a parte.`; break
     case 6: phrase = `Qué asko me dan los ${getRandomPambi()}s`; break
     case 7: phrase = `He llegado a la conclusión que a los ${getRandomPambi()} les gusta que les insulten.`; break
-    default: phrase = `Dalas da mucho asko, pero los ${getRandomPambi()} dan aún más askete.`
+    default: phrase = `Dalas da mucho asko, pero los ${getRandomPambi()}s dan aún más askete.`
   }
   return phrase
 }
