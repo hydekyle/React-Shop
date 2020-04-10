@@ -40,7 +40,7 @@ const config = {
   muteAfterFollow: false,
   showTweet: true,
   followIntervalMinutes: 1,
-  replyIntervalMinutes: 5, //Perfect fit for 300 tweets/3h API LIMIT
+  replyIntervalMinutes: 10, //Perfect fit for 300 tweets/3h API LIMIT
   replyTweet: true, //Careful spam
 }
 
@@ -80,8 +80,8 @@ const getRandomInsult = () => {
     case 2: phrase = `Dalas tiene un verdadero problema mental y su contenido siempre es basura tóxica. Si te gusta eso, eso es lo que eres.`; break
     case 3: phrase = `A Dalas solo le apoyan niños sin amigos y cuentas fan penosas, planteate tú por qué.`; break
     case 4: phrase = `Debe ser duro ser ${getRandomPambi()}. Bullying en el cole, bullying en Twitter...`; break
-    case 5: phrase = `A los ${getRandomPambi()} hay que echarles de comer a parte.`; break
-    case 6: phrase = `Qué asko me dan los ${getRandomPambi()}`; break
+    case 5: phrase = `A los ${getRandomPambi()}s hay que echarles de comer a parte.`; break
+    case 6: phrase = `Qué asko me dan los ${getRandomPambi()}s`; break
     case 7: phrase = `He llegado a la conclusión que a los ${getRandomPambi()} les gusta que les insulten.`; break
     default: phrase = `Dalas da mucho asko, pero los ${getRandomPambi()} dan aún más askete.`
   }
