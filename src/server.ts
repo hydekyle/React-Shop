@@ -40,7 +40,7 @@ const config = {
   muteAfterFollow: false,
   showTweet: true,
   followIntervalMinutes: 1,
-  replyIntervalMinutes: 0.6, //Perfect fit for 300 tweets/3h API LIMIT
+  replyIntervalMinutes: 5, //Perfect fit for 300 tweets/3h API LIMIT
   replyTweet: true, //Careful spam
 }
 
@@ -137,6 +137,7 @@ const toReply = (tweetData: TweetData) => {
   for (let name of filtered_users) {
     if (name == tweetData.screen_name) {
       console.log("Evitando responder al mismo")
+      replyLastSaved()
       return
     }
   }
