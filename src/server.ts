@@ -22,7 +22,7 @@ app.use(compression())
 app.use("/db", products_router)
 
 //Twitter Bot
-const tweets_filter = "#sub4sub"
+const tweets_filter = "dalasreview"
 let filtered_users: Array<string> = []
 let counter_accounts = 0
 let saved_accounts: Array<TweetData> = []
@@ -35,13 +35,16 @@ const config = {
   paid_link: "",
   countries_filter: ["us", "usa", "united states", "new york", "america"],
   countryFilter: false,
-  dontRepeatSameUser: false,
-  followTweetOwner: true,
-  muteAfterFollow: true,
   showTweet: false,
+
+  followTweetOwner: false,
+  muteAfterFollow: false,
+
+  replyTweet: true, //Careful spam
+  dontRepeatSameUser: true,
+
   followIntervalMinutes: 3,
   replyIntervalMinutes: 0.66, //Perfect fit for 300 tweets/3h API LIMIT
-  replyTweet: false, //Careful spam
 }
 
 const getKeys = () => {
