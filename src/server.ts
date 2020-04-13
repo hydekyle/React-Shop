@@ -44,7 +44,7 @@ const config = {
   dontRepeatSameUser: true,
 
   followIntervalMinutes: 3,
-  replyIntervalMinutes: 0.66, //Perfect fit for 300 tweets/3h API LIMIT
+  replyIntervalMinutes: 1, //Perfect fit for 300 tweets/3h API LIMIT
 }
 
 const getKeys = () => {
