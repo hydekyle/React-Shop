@@ -55,7 +55,7 @@ export default () => {
     const CheckMap = (map: Map<string, boolean>) => {
         for (var x = 0; x < props.rows; x++) {
             for (var y = 0; y < props.columns; y++) {
-                if (map[`${x}|${y}`] == false) return //Si alguno está desactivado, dejar de comprobar
+                if (map[`${x}|${y}`] === false) return //Si alguno está desactivado, dejar de comprobar
             }
         }
         Win()
