@@ -58,6 +58,7 @@ export default () => {
 
     return (
         <div>
+            <h3>Usa la rueda del botón para rotar las lunas.</h3>
             <div className='box'>
                 <button onClick={() => SetRows(-1)}>Row-</button>
                 <button onClick={() => SetRows(1)}>Row+</button>
@@ -65,13 +66,13 @@ export default () => {
                 <button onClick={() => SetColumns(1)}>Column+</button>
             </div>
             <div className='box'>
-                {Array.from(Array(props.rows), (e, rowNumber) => {
+                {Array.from(Array(props.columns), (e, rowNumber) => {
                     return <div
                         className='moon-picker'
                         key={rowNumber}>
 
                         {
-                            Array.from(Array(props.columns), (e, columnNumber) => {
+                            Array.from(Array(props.rows), (e, columnNumber) => {
                                 const myKey = `${rowNumber}|${columnNumber}`
                                 return (
                                     <div

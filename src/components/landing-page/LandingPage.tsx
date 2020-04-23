@@ -14,7 +14,11 @@ export default () => {
                     ¿Qué secretos esconderá esta página random?
                 </div>
                 <div className="btn-entrar">
-                    <Button color="success">Entrar</Button>
+                    <Button
+                        color="success"
+                        onClick={() => window.location.href = '/moons'}
+                    >Entrar
+                    </Button>
                 </div>
             </div>
         </div>

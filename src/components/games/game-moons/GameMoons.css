@@ -5,6 +5,5 @@
 }
 .moon-picker {
   display: flex;
-  flex-direction: row;
-  background-color: yellow;
+  flex-direction: column;
 }

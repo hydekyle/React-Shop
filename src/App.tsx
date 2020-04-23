@@ -15,7 +15,7 @@ export default () =>
   <div>
     <MainProvider>
       <Switch>
-        <Route path='/' component={LandingPage}></Route>
+
         <Route path='/shop' component={ItemCard}></Route>
         <Route path='/moons' component={GameMoon}></Route>
         <Route path='/puzzle' component={GamePuzzle}></Route>
@@ -24,6 +24,7 @@ export default () =>
           <BoxInput />
           <BannerWelcome />
         </Route>
+        <Route path='/' component={LandingPage}></Route>
       </Switch>
     </MainProvider>
   </div>
