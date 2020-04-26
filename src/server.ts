@@ -24,7 +24,6 @@ app.use("/db", products_router)
 //Twitter Bot
 const tweets_filter = "dalasreview"
 let filtered_users: Array<string> = []
-let counter_accounts = 0
 let saved_accounts: Array<TweetData> = []
 
 interface TweetData {
@@ -35,8 +34,8 @@ const config = {
   paid_link: "",
   countries_filter: ["us", "usa", "united states", "new york", "america"],
   countryFilter: false,
-  showTweet: false,
 
+  showTweet: true,
   followTweetOwner: false,
   muteAfterFollow: false,
 
@@ -147,6 +146,19 @@ const toMute = screenName => {
   })
 }
 
+let replyLastSaved = () => {
+  if (saved_accounts.length > 0) {
+    toReply(saved_accounts.pop())
+    if (saved_accounts.length > 100) sliceSavedAccounts()
+    console.log(`Replies awaiting: ${saved_accounts.length}`)
+  }
+}
+
+const sliceSavedAccounts = () => {
+  saved_accounts = saved_accounts.slice(saved_accounts.length / 2, saved_accounts.length)
+  console.warn("Accounts sliced!")
+}
+
 const toReply = (tweetData: TweetData) => {
   for (let name of filtered_users) {
     if (name == tweetData.screen_name) {
@@ -180,16 +192,7 @@ const saveLastTweet = (tweetData: TweetData) => {
 let followLastSaved = () => {
   if (saved_accounts.length > 0) {
     toFollow(saved_accounts.pop())
-    counter_accounts++
-    console.log(`Saved: ${saved_accounts.length} | Followed: ${counter_accounts}`)
-  }
-}
-
-let replyLastSaved = () => {
-  if (saved_accounts.length > 0) {
-    toReply(saved_accounts.pop())
-    counter_accounts++
-    console.log(`Replies: ${saved_accounts.length}`)
+    console.log(`Saved: ${saved_accounts.length}`)
   }
 }
 
