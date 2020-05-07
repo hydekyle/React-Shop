@@ -22,7 +22,6 @@ app.use(compression())
 app.use("/db", products_router)
 
 //Twitter Bot
-const tweets_filter = "dalasreview"
 let filtered_users: Array<string> = []
 let saved_accounts: Array<TweetData> = []
 
@@ -30,28 +29,29 @@ interface TweetData {
   screen_name: string,
   tweetID: number
 }
+
 const config = {
-  paid_link: "",
+  tweets_filter: "spotify",
+  paid_link: "https://mistery.games/free-spotify-US",
   countries_filter: ["us", "usa", "united states", "new york", "america"],
-  countryFilter: false,
-
-  showTweet: true,
-  followTweetOwner: false,
-  muteAfterFollow: false,
-
+  countryFilter: true,
   replyTweet: true, //Careful spam
+  showTweet: true,
   dontRepeatSameUser: true,
 
+  followTweetOwner: false,
+  muteAfterFollow: false,
   followIntervalMinutes: 3,
   replyIntervalMinutes: 1, //Perfect fit for 300 tweets/3h API LIMIT
 }
 
+let bot_name = "bot"
 const getKeys = () => {
   let result;
   switch (process.argv[2]) {
-    case "hyde": result = require("./twitter-config").hyde; break
-    case "bot": result = require("./twitter-config").bot; break
-    default: result = require("./twitter-config").asko
+    case "hyde": result = require("./twitter-config").hyde; bot_name = "hyde"; break
+    case "asko": result = require("./twitter-config").asko; bot_name = "asko"; break
+    default: result = require("./twitter-config").bot
   }
   return result
 }
@@ -60,7 +60,19 @@ const twitter_keys = getKeys()
 let twitter: Twitter = new Twitter(twitter_keys)
 
 const getReplyText = receiverName => {
-  return `@${receiverName} ${getRandomInsult()}`
+  let tweet_text = bot_name == "asko" ? getRandomInsult() : getRandomOffer()
+  return `@${receiverName} ${tweet_text}`
+}
+
+const getRandomOffer = () => {
+  let phrase: string = "";
+  switch (_.random(0, 5)) {
+    case 1: phrase = `You can have Spotify Premium for free for one year just taking this survey!`; break
+    case 2: phrase = `Hey! We are giving Spotify Premium for free by just taking a survey.`; break
+    case 3: phrase = `We are giving Spotify Premium!`; break
+    default: phrase = `Hey! We are giving Spotify Premium for free by just taking a survey.`; break
+  }
+  return phrase + ` ${config.paid_link}`
 }
 
 const getRandomPambi = () => {
@@ -101,7 +113,7 @@ const getRandomInsult = () => {
   return phrase
 }
 
-twitter.stream("statuses/filter", { track: tweets_filter }, stream => {
+twitter.stream("statuses/filter", { track: config.tweets_filter }, stream => {
 
   stream.on("data", tweet => {
     if (checkCountry(tweet)) handleIncomingTweet(tweet)
