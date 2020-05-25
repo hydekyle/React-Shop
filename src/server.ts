@@ -44,7 +44,7 @@ const config = {
   followTweetOwner: false,
   muteAfterFollow: false,
   followIntervalMinutes: 3,
-  replyIntervalMinutes: 1, //Perfect fit for 300 tweets/3h API LIMIT
+  replyIntervalMinutes: 5, //Askito: 1
 }
 
 let bot_name = "bot"
@@ -93,10 +93,7 @@ const getRandomPambi = () => {
 }
 
 const getRandomInsult = (userID: number) => {
-  if (checkIfFollower(userID)) {
-    console.warn("Evitando insultar a un follower")
-    return "Mis pambifollowers tienen mis respetos."
-  }
+  if (checkIfFollower(userID)) return "Mis pambifollowers tienen mis respetos."
   let phrase: string = ""
   const pambiInsult = getRandomPambi()
   switch (_.random(4, 16)) {
