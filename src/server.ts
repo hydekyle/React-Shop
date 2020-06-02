@@ -44,7 +44,7 @@ const config = {
   followTweetOwner: false,
   muteAfterFollow: false,
   followIntervalMinutes: 3,
-  replyIntervalMinutes: 5, //Askito: 1
+  replyIntervalMinutes: 1, //Askito: 1
 }
 
 let bot_name = "bot"
@@ -79,7 +79,7 @@ const getRandomOffer = () => {
 
 const getRandomPambi = () => {
   let pambi: string = ""
-  switch (_.random(0, 5)) {
+  switch (_.random(0, 12)) {
     case 1: pambi = "pambisimio"; break
     case 2: pambi = "pambiretrasado"; break
     case 3: pambi = "pambidiota"; break
@@ -87,6 +87,10 @@ const getRandomPambi = () => {
     case 5: pambi = "pambipenoso"; break
     case 6: pambi = "pambisidoso"; break
     case 7: pambi = "pambicanceroso"; break
+    case 8: pambi = "pambibasura"; break
+    case 9: pambi = "pambiaskeroso"; break
+    case 10: pambi = "pambitotufo"; break
+    case 11: pambi = "pambitotufo"; break
     default: pambi = "pambisito"
   }
   return pambi
@@ -96,7 +100,7 @@ const getRandomInsult = (userID: number) => {
   if (checkIfFollower(userID)) return "Mis pambifollowers tienen mis respetos."
   let phrase: string = ""
   const pambiInsult = getRandomPambi()
-  switch (_.random(4, 16)) {
+  switch (_.random(0, 25)) {
     case 1: phrase = `Si te hacen bullying en el cole tienes más papeletas para ser ${pambiInsult}.`; break
     case 2: phrase = `He llegado a la conclusión que a los ${pambiInsult}s les gusta que les insulten.`; break
     case 3: phrase = `A Dalas solo le apoyan niños sin amigos y cuentas fan penosas, planteate tú por qué.`; break
@@ -105,13 +109,22 @@ const getRandomInsult = (userID: number) => {
     case 6: phrase = `A los ${pambiInsult}s hay que echarles de comer a parte.`; break
     case 7: phrase = `¡Vamos ${pambiInsult}s, todos en manada a pagarle los juicios a Dalas para que tengáis más contenido tóxico!`; break
     case 8: phrase = `Los ${pambiInsult}s a veces me dan ganas de vomitar.`; break
-    case 9: phrase = `Los ${pambiInsult}s me dan ganas de vomitar. UN POCO de ganas de vomitar.`; break
+    case 9: phrase = `Los ${pambiInsult}s me dan ganas de vomitar. MUUUUCHAS ganas de vomitar.`; break
     case 10: phrase = `Los ${pambiInsult}s son muy tristes, me dan un poquito de penita.`; break
     case 11: phrase = `¿Cuán triste tiene que ser la vida de un ${pambiInsult} para ser ${pambiInsult}?`; break
     case 12: phrase = `Dalas recibe acosito porque lo único que ha hecho él en su vida es acosar. Seguid bailandole el agüita, ${pambiInsult}s`; break
     case 13: phrase = `Los ${pambiInsult}s son casi peor que el coronavirus.`; break
-    case 14: phrase = `Casi que prefiero tener coronavirus a ser ${pambiInsult}`; break
-    default: phrase = `Dalas da mucho asko, pero la mayoría de ${pambiInsult}s dan aún más askete.`
+    case 14: phrase = `Realmente prefiero tener coronavirus a ser ${pambiInsult}`; break
+    case 15: phrase = `Dalas da asko, pero los ${pambiInsult}s dan x2 asko`; break
+    case 16: phrase = `Dalas es basura tóxica y los ${pambiInsult}s han demostrado ser más de lo mismo.`; break
+    case 17: phrase = `Los ${pambiInsult}s son pura eskoria tóxica. Lo he comprobado de primera mano.`; break
+    case 18: phrase = `Los ${pambiInsult}s dan ganas de vomitar.`; break
+    case 19: phrase = `A los ${pambiInsult}s habría que escupirles en un ojo. EN UN PUTO OJO.`; break
+    case 20: phrase = `A los ${pambiInsult}s habría que mearles en la boca.`; break
+    case 21: phrase = `A los ${pambiInsult}s habría que petarles el culo`; break
+    case 22: phrase = `Los ${pambiInsult}s le dan asko al cáncer.`; break
+    case 23: phrase = `Los ${pambiInsult}s le dan asko al coronavirus.`; break
+    default: phrase = `Los ${pambiInsult}s son basura y hay que recordarlo todos los días.`
   }
   return phrase
 }
@@ -119,7 +132,8 @@ const getRandomInsult = (userID: number) => {
 twitter.stream("statuses/filter", { track: config.tweets_filter }, stream => {
 
   stream.on("data", tweet => {
-    if (checkCountry(tweet)) handleIncomingTweet(tweet)
+    console.log(`Nombre: ${tweet.user.name}`)
+    if (checkCountry(tweet) && isNameWithPambi(tweet.user.name)) handleIncomingTweet(tweet)
   })
 
   stream.on("error", error => {
@@ -127,6 +141,10 @@ twitter.stream("statuses/filter", { track: config.tweets_filter }, stream => {
   })
 
 })
+
+const isNameWithPambi = (name: string) => {
+  return name.includes("🍞")
+}
 
 const handleIncomingTweet = tweet => {
   if (config.showTweet) showTweet(tweet)
@@ -173,7 +191,6 @@ const sliceSavedAccounts = () => {
 }
 
 const toReply = (tweetData: TweetData) => {
-  tweetData.tweetID
   for (let name of filtered_users) {
     if (name == tweetData.screen_name) {
       console.log("Evitando responder al mismo")
