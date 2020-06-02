@@ -33,12 +33,12 @@ interface TweetData {
 }
 
 const config = {
-  tweets_filter: "dalasreview",
+  tweets_filter: "dalasreview,jordiwild",
   paid_link: "https://mistery.games/free-spotify-US",
   countries_filter: ["us", "usa", "united states", "new york", "america"],
   countryFilter: false,
   replyTweet: true, //Careful spam
-  showTweet: true,
+  showTweet: false,
   dontRepeatSameUser: true,
 
   followTweetOwner: false,
@@ -62,7 +62,7 @@ const twitter_keys = getKeys()
 let twitter: Twitter = new Twitter(twitter_keys)
 
 const getReplyText = (tweetData: TweetData) => {
-  let tweet_text = bot_name == "asko" ? getRandomInsult(tweetData.userID) : getRandomOffer()
+  let tweet_text = bot_name === "asko" ? getRandomInsult(tweetData.userID) : getRandomOffer()
   return `@${tweetData.screen_name} ${tweet_text}`
 }
 
@@ -132,8 +132,7 @@ const getRandomInsult = (userID: number) => {
 twitter.stream("statuses/filter", { track: config.tweets_filter }, stream => {
 
   stream.on("data", tweet => {
-    console.log(`Nombre: ${tweet.user.name}`)
-    if (checkCountry(tweet) && isNameWithPambi(tweet.user.name)) handleIncomingTweet(tweet)
+    handleIncomingTweet(tweet)
   })
 
   stream.on("error", error => {
@@ -142,17 +141,19 @@ twitter.stream("statuses/filter", { track: config.tweets_filter }, stream => {
 
 })
 
-const isNameWithPambi = (name: string) => {
-  return name.includes("🍞")
-}
-
 const handleIncomingTweet = tweet => {
   if (config.showTweet) showTweet(tweet)
+  if (!isNameWithPambi(tweet.user.name)) return
+  if (!checkCountry(tweet)) return
   saveLastTweet({
     userID: tweet.user.id,
     screen_name: tweet.user.screen_name,
     tweetID: tweet.id_str
   })
+}
+
+const isNameWithPambi = (name: string) => {
+  return name.includes("🍞")
 }
 
 const checkCountry = tweet => {
@@ -161,7 +162,7 @@ const checkCountry = tweet => {
   let countries = tweet.user.location.split(",")
   for (let country of countries)
     for (let filter of config.countries_filter)
-      if (filter == country.trim().toLowerCase()) return true
+      if (filter === country.trim().toLowerCase()) return true
   return false
 }
 
