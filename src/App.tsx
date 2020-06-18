@@ -1,7 +1,8 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import LandingPage from './components/landing-page/LandingPage'
-import OfferSpotify from './components/offer-spotify/OfferSpotify'
+//import LandingPage from './components/landing-page/LandingPage'
+import ElMisterioDeLaOscuridad from './components/el-misterio-de-la-oscuridad/ElMisterioDeLaOscuridad'
+//import OfferSpotify from './components/offer-spotify/OfferSpotify'
 import { MainProvider } from './Context/ContextMain'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
@@ -10,7 +11,7 @@ export default () =>
   <div>
     <MainProvider>
       <Switch>
-        <Route path='/' component={LandingPage}></Route>
+        <Route path='/' component={ElMisterioDeLaOscuridad}></Route>
       </Switch>
     </MainProvider>
   </div>
