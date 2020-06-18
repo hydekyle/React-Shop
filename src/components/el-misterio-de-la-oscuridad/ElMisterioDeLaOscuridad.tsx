@@ -87,16 +87,26 @@ const Example = (props) => {
                         <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
                     </Carousel>
                 </div>
-                <div className="btn-entrar">
-                    <Button
-                        color="success"
-                        size="lg"
-                        onClick={() => window.location.href = 'http://lnkclik.com/8R1o'}
-                    >Get premium!
+                <div className="buttons">
+                    <div className="btn-facebook">
+                        <Button
+                            color="primary"
+                            size="lg"
+                            onClick={() => window.location.href = 'https://www.facebook.com/elmisteriodelaoscuridad'}
+                        >Facebook
                     </Button>
+                    </div>
+                    <div className="btn-descargar">
+                        <Button
+                            color="success"
+                            size="lg"
+                            onClick={() => window.location.href = 'https://www.mediafire.com/file/asewoixg030yv5a/El_Misterio_de_la_Oscuridad_Alfa_3.zip/file?fbclid=IwAR2FewApUSdsphV2qHwYRnZ3KEfubTvhEZitZEXeRFNN_Hd2GBfGOdRplb0'}
+                        >Descargar
+                    </Button>
+                    </div>
                 </div>
                 <div className="page-details">
-                    Note: this promotion is only available for United States.
+
                 </div>
             </div>
         </div>
