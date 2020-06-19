@@ -79,7 +79,6 @@ const Example = (props) => {
                         interval={false}
                         allowFullScreen={true}
                         allowTransparency={true}
-
                     >
                         <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
                         {slides}

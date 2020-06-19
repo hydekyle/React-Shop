@@ -31,23 +31,20 @@ const MainBar = (props) => {
                                 Juegos
               </DropdownToggle>
                             <DropdownMenu right>
-                                <DropdownItem>
-                                    Option 1
+                                <DropdownItem href="/sor">
+                                    SoR Game
                 </DropdownItem>
-                                <DropdownItem>
-                                    Option 2
+                                <DropdownItem href="/elmisteriodelaoscuridad">
+                                    El Misterio de la Oscuridad
                 </DropdownItem>
                                 <DropdownItem divider />
-                                <DropdownItem>
-                                    Reset
-                </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
                         <NavItem>
                             <NavLink href="https://github.com/hydekyle" preload="true" target="_blank" >GitHub</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/contacto">Contacto</NavLink>
+                            <NavLink href="mailto:hydekyle@hotmail.com">Contacto</NavLink>
                         </NavItem>
                     </Nav>
 
