@@ -21,7 +21,7 @@ app.use(compression())
 
 app.use("/db", products_router)
 
-//Twitter Bot
+//#region Twitter bot
 let filtered_users: Array<string> = []
 let saved_accounts: Array<TweetData> = []
 let followers_ids: Array<number> = []
@@ -33,27 +33,33 @@ interface TweetData {
 }
 
 const config = {
-  tweets_filter: "dalasreview,jordiwild",
+  tweets_filter: "dalasreview",
+
   paid_link: "https://mistery.games/free-spotify-US",
+
+  showTweet: false,
+
   countries_filter: ["us", "usa", "united states", "new york", "america"],
   countryFilter: false,
+
   replyTweet: true, //Careful spam
-  showTweet: false,
+
   dontRepeatSameUser: true,
 
   followTweetOwner: false,
   muteAfterFollow: false,
-  followIntervalMinutes: 3,
+
+  followIntervalMinutes: 2,
   replyIntervalMinutes: 1, //Askito: 1
 }
 
-let bot_name = "bot"
+let bot_name = "hyde"
 const getKeys = () => {
   let result;
   switch (process.argv[2]) {
     case "hyde": result = require("./twitter-config").hyde; bot_name = "hyde"; break
     case "asko": result = require("./twitter-config").asko; bot_name = "asko"; break
-    default: result = require("./twitter-config").bot
+    default: result = require("./twitter-config").hyde
   }
   return result
 }
@@ -62,7 +68,7 @@ const twitter_keys = getKeys()
 let twitter: Twitter = new Twitter(twitter_keys)
 
 const getReplyText = (tweetData: TweetData) => {
-  let tweet_text = bot_name === "asko" ? getRandomInsult(tweetData.userID) : getRandomOffer()
+  let tweet_text = bot_name === "hyde" ? getRandomInsult(tweetData.userID) : getRandomOffer()
   return `@${tweetData.screen_name} ${tweet_text}`
 }
 
@@ -79,7 +85,7 @@ const getRandomOffer = () => {
 
 const getRandomPambi = () => {
   let pambi: string = ""
-  switch (_.random(0, 12)) {
+  switch (_.random(8, 14)) {
     case 1: pambi = "pambisimio"; break
     case 2: pambi = "pambiretrasado"; break
     case 3: pambi = "pambidiota"; break
@@ -91,6 +97,8 @@ const getRandomPambi = () => {
     case 9: pambi = "pambiaskeroso"; break
     case 10: pambi = "pambitotufo"; break
     case 11: pambi = "pambitotufo"; break
+    case 12: pambi = "pambiculiao"; break
+    case 13: pambi = "pambiputoso"; break
     default: pambi = "pambisito"
   }
   return pambi
@@ -100,7 +108,7 @@ const getRandomInsult = (userID: number) => {
   if (checkIfFollower(userID)) return "Mis pambifollowers tienen mis respetos."
   let phrase: string = ""
   const pambiInsult = getRandomPambi()
-  switch (_.random(0, 25)) {
+  switch (_.random(18, 25)) {
     case 1: phrase = `Si te hacen bullying en el cole tienes más papeletas para ser ${pambiInsult}.`; break
     case 2: phrase = `He llegado a la conclusión que a los ${pambiInsult}s les gusta que les insulten.`; break
     case 3: phrase = `A Dalas solo le apoyan niños sin amigos y cuentas fan penosas, planteate tú por qué.`; break
@@ -121,9 +129,8 @@ const getRandomInsult = (userID: number) => {
     case 18: phrase = `Los ${pambiInsult}s dan ganas de vomitar.`; break
     case 19: phrase = `A los ${pambiInsult}s habría que escupirles en un ojo. EN UN PUTO OJO.`; break
     case 20: phrase = `A los ${pambiInsult}s habría que mearles en la boca.`; break
-    case 21: phrase = `A los ${pambiInsult}s habría que petarles el culo`; break
-    case 22: phrase = `Los ${pambiInsult}s le dan asko al cáncer.`; break
-    case 23: phrase = `Los ${pambiInsult}s le dan asko al coronavirus.`; break
+    case 21: phrase = `Los ${pambiInsult}s le dan asko al cáncer.`; break
+    case 22: phrase = `Los ${pambiInsult}s le dan asko al coronavirus.`; break
     default: phrase = `Los ${pambiInsult}s son basura y hay que recordarlo todos los días.`
   }
   return phrase
@@ -193,7 +200,7 @@ const sliceSavedAccounts = () => {
 
 const toReply = (tweetData: TweetData) => {
   for (let name of filtered_users) {
-    if (name == tweetData.screen_name) {
+    if (name === tweetData.screen_name) {
       console.log("Evitando responder al mismo")
       replyLastSaved()
       return
@@ -261,6 +268,8 @@ const start = () => {
 const resetFilteredUsers = () => {
   filtered_users = []
 }
+
+//#endregion
 
 app.listen(PORT, () => {
   console.log(`Ready on port ${PORT}!`)

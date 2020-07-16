@@ -21,7 +21,8 @@
     "server": "nodemon src/server.ts",
     "bot": "nodemon src/server.ts",
     "asko": "nodemon src/server.ts asko",
-    "hyde": "nodemon src/server.ts hyde 8081"
+    "hyde": "nodemon src/server.ts hyde 8081",
+    "gameserver": "nodemon src/gameserver.ts"
   },
   "eslintConfig": {
     "extends": "react-app"
