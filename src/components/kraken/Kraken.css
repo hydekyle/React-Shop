@@ -10,7 +10,7 @@
   background: grey;
 }
 .title {
-  color: #ff0000;
+  color: #056b35;
   text-align: center;
   margin-left: 5%;
   margin-right: 5%;
@@ -28,14 +28,6 @@
   margin: auto;
   padding-top: 10px;
   padding-bottom: 10px;
-}
-.carousel-mo {
-  display: flex;
-  align-self: center;
-  width: 640px;
-  height: 480px;
-  margin-bottom: 1em;
-  margin-top: 1em;
 }
 .buttons {
   display: flex;

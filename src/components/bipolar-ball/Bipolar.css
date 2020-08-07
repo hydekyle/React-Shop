@@ -1,7 +1,7 @@
-.page {
+.page-bipolarr {
   display: flex;
 }
-.main-content {
+.main-content-bipolar {
   display: flex;
   margin: auto;
   padding-right: 5%;
@@ -9,7 +9,7 @@
   flex-flow: column;
   background: grey;
 }
-.title {
+.title-bipolar {
   color: #ff0000;
   text-align: center;
   margin-left: 5%;
@@ -17,33 +17,33 @@
   padding-top: 10px;
   text-shadow: black 4px 4px;
 }
-.page-description {
+.page-description-bipolar {
   color: yellow;
   text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
   text-shadow: black 3px 3px;
 }
-.btn-entrar {
+.btn-entrar-bipolar {
   margin: auto;
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.carousel-mo {
+.carousel-bipolar {
   display: flex;
   align-self: center;
-  width: 640px;
-  height: 480px;
+  width: 50px;
+  height: 353px;
   margin-bottom: 1em;
   margin-top: 1em;
 }
-.buttons {
+.buttons-bipolar {
   display: flex;
   margin: auto;
 }
-.btn-descargar {
+.btn-descargar-bipolar {
   margin-left: 2em;
 }
-.page-details {
+.page-details-bipolar {
   margin-bottom: 1em;
 }

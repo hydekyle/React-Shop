@@ -29,14 +29,29 @@ const MainBar = (props) => {
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
                                 Juegos
-              </DropdownToggle>
+                            </DropdownToggle>
                             <DropdownMenu right>
-                                <DropdownItem href="/sor">
-                                    SoR Game
-                </DropdownItem>
+                                <DropdownItem href="/askito">
+                                    Askito Adventures
+                                </DropdownItem>
+                                <DropdownItem href="/evolution">
+                                    Evolution Game
+                                </DropdownItem>
+                                <DropdownItem href="/cricket">
+                                    Cricket Arcade
+                                </DropdownItem>
+                                <DropdownItem href="/kraken">
+                                    Kraken vs Bird
+                                </DropdownItem>
+                                <DropdownItem href="/bipolar">
+                                    Impossible BipolarBall
+                                </DropdownItem>
+                                <DropdownItem href="/spacewar">
+                                    Space War Arcade
+                                </DropdownItem>
                                 <DropdownItem href="/elmisteriodelaoscuridad">
                                     El Misterio de la Oscuridad
-                </DropdownItem>
+                                </DropdownItem>
                                 <DropdownItem divider />
                             </DropdownMenu>
                         </UncontrolledDropdown>

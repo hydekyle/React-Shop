@@ -29,14 +29,6 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.carousel-mo {
-  display: flex;
-  align-self: center;
-  width: 640px;
-  height: 480px;
-  margin-bottom: 1em;
-  margin-top: 1em;
-}
 .buttons {
   display: flex;
   margin: auto;

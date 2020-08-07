@@ -11,19 +11,9 @@ import {
 
 const items = [
     {
-        src: 'https://scontent-mad1-1.xx.fbcdn.net/v/t1.0-9/97970113_2957148577700336_8191186392265523200_n.png?_nc_cat=110&_nc_sid=730e14&_nc_ohc=LsqLXzbAWlwAX_118kf&_nc_ht=scontent-mad1-1.xx&oh=26e5e39250e591a3ec33577abc6d7ebd&oe=5F117D92',
-        altText: 'Slide 1',
-        caption: 'Slide 1'
-    },
-    {
-        src: 'https://scontent-mad1-1.xx.fbcdn.net/v/t1.0-9/71335419_2443997762348756_5783135844445454336_n.png?_nc_cat=108&_nc_sid=730e14&_nc_ohc=rD4eF0S4h-4AX9Q5MbG&_nc_ht=scontent-mad1-1.xx&oh=1ac847e1a33e2dd596aae47e51c361a6&oe=5F115403',
-        altText: 'Slide 1',
-        caption: 'Slide 1'
-    },
-    {
-        src: 'https://scontent-mad1-1.xx.fbcdn.net/v/t1.0-9/69870017_2424483704300162_1031134215120355328_n.png?_nc_cat=109&_nc_sid=730e14&_nc_ohc=fv5ZbAOPOF0AX9HfgKh&_nc_ht=scontent-mad1-1.xx&oh=c9d03d5efc827a17f7a0839eb1411678&oe=5F0F05BE',
-        altText: 'Slide 1',
-        caption: 'Slide 1'
+        src: 'https://i.ibb.co/2tMbWBC/15732668-1216018278480050-1964737736489139844-o.png',
+        altText: '',
+        caption: ''
     }
 
 ]
