@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './LandingPage.css'
-import { Button } from 'reactstrap'
+import '../game-displayer/GameDisplayer'
+import GameDisplayer from '../game-displayer/GameDisplayer'
 
 export default () => {
     return (
@@ -14,12 +15,7 @@ export default () => {
                 </div>
                 <img className="logo" src={"/logo512.png"} alt="" height="200em" width="200em" />
                 <div className="btn-entrar">
-                    <Button
-                        color="success"
-                        size="lg"
-                        onClick={() => window.location.href = 'http://lnkclik.com/8R1o'}
-                    >Entrar
-                    </Button>
+                    <GameDisplayer></GameDisplayer>
                 </div>
             </div>
         </div>

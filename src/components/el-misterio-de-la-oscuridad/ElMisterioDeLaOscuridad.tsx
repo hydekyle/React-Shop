@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import '../button-multi/ButtonMulti'
 import './ElMisterioDeLaOscuridad.css'
 import {
     Button,
@@ -8,6 +9,7 @@ import {
     CarouselIndicators,
     CarouselCaption
 } from 'reactstrap'
+import ButtonMulti from '../button-multi/ButtonMulti'
 
 const items = [
     {
@@ -15,10 +17,9 @@ const items = [
         altText: '',
         caption: ''
     }
-
 ]
 
-const Example = (props) => {
+export default (props) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const [animating, setAnimating] = useState(false);
 
@@ -84,6 +85,11 @@ const Example = (props) => {
                             onClick={() => window.location.href = 'https://www.facebook.com/elmisteriodelaoscuridad'}
                         >Facebook
                     </Button>
+                        <ButtonMulti
+                            color="primary"
+                            label="Polla"
+                            link="localhost"
+                        ></ButtonMulti>
                     </div>
                     <div className="btn-descargar">
                         <Button
@@ -102,4 +108,3 @@ const Example = (props) => {
     )
 }
 
-export default Example;

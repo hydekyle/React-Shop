@@ -1,0 +1,30 @@
+{
+    "games": [
+        {
+            "title": "El Misterio de la Oscuridad",
+            "description": "Ahí afuera acechan muchos peligros, ¿podrás lidiar con ellos?",
+            "link": "www.facebook.com/elmisteriodelaoscuridad",
+            "photos": [
+                {
+                    "src": "https://i.ibb.co/2tMbWBC/15732668-1216018278480050-1964737736489139844-o.png",
+                    "altText": "MO Remake"
+                },
+                {
+                    "src": "https://i.ibb.co/2tMbWBC/15732668-1216018278480050-1964737736489139844-o.png",
+                    "altText": "MO Calabozo"
+                }
+            ]
+        },
+        {
+            "title": "El Misterio de la Oscuridad 2",
+            "description": "Ahí afuera acechan muchos peligros, ¿podrás lidiar con ellos?",
+            "link": "www.facebook.com/elmisteriodelaoscuridad",
+            "photos": [
+                {
+                    "src": "https://i.ibb.co/2tMbWBC/15732668-1216018278480050-1964737736489139844-o.png",
+                    "altText": "MO Remake"
+                }
+            ]
+        }
+    ]
+}
