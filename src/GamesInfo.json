@@ -1,6 +1,47 @@
 {
     "games": [
         {
+            "title": "Kraken vs Bird",
+            "description": "Kraken vs Bird",
+            "link": "www.facebook.com/elmisteriodelaoscuridad",
+            "photos": [
+                {
+                    "src": "https://i.ibb.co/wh9zqNR/unnamed.png",
+                    "altText": "Kraken vs Bird Online"
+                }
+            ]
+        },
+        {
+            "title": "Impossible BipolarBall",
+            "description": "Alterna el color para atravesar obstáculos.",
+            "link": "www.facebook.com/elmisteriodelaoscuridad",
+            "photos": [
+                {
+                    "src": "https://i.ibb.co/kgV4dkd/8.png",
+                    "altText": "BipolarBall level2"
+                },
+                {
+                    "src": "https://i.ibb.co/3TfQ0hW/9.png",
+                    "altText": "BipolarBall last level"
+                }
+            ]
+        },
+        {
+            "title": "Space War Arcade",
+            "description": "Arena espacial con enemigos infinitos.",
+            "link": "www.facebook.com/elmisteriodelaoscuridad",
+            "photos": [
+                {
+                    "src": "https://lh3.googleusercontent.com/2OnrK3Fq5QKDH8TCPojBgRaNKd4GdltrLZEHxSiOGE3eOdrnXs0N8cgtMsS8K6Y2ir8",
+                    "altText": "Space War Boss"
+                },
+                {
+                    "src": "https://lh3.googleusercontent.com/-PTsXIwC7pGkCU67bQGqaaVENX4BoEgb8-Szq2Ik2pVygtpavYAneS5y2K_VHFib8uU",
+                    "altText": "Space War Boss"
+                }
+            ]
+        },
+        {
             "title": "El Misterio de la Oscuridad",
             "description": "Ahí afuera acechan muchos peligros, ¿podrás lidiar con ellos?",
             "link": "www.facebook.com/elmisteriodelaoscuridad",
@@ -12,17 +53,6 @@
                 {
                     "src": "https://i.ibb.co/2tMbWBC/15732668-1216018278480050-1964737736489139844-o.png",
                     "altText": "MO Calabozo"
-                }
-            ]
-        },
-        {
-            "title": "El Misterio de la Oscuridad 2",
-            "description": "Ahí afuera acechan muchos peligros, ¿podrás lidiar con ellos?",
-            "link": "www.facebook.com/elmisteriodelaoscuridad",
-            "photos": [
-                {
-                    "src": "https://i.ibb.co/2tMbWBC/15732668-1216018278480050-1964737736489139844-o.png",
-                    "altText": "MO Remake"
                 }
             ]
         }

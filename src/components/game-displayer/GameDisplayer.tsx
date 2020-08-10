@@ -7,20 +7,14 @@ import {
     CarouselItem,
     CarouselControl,
     CarouselIndicators,
-    CarouselCaption
+    CarouselCaption,
+    Button
 } from 'reactstrap'
 import GamesInfoJSON from '../../GamesInfo.json'
 
 interface photo {
     src: string
     altText: string
-}
-
-interface Props {
-    photos: photo[]
-    title: string
-    description: string
-    link: string
 }
 
 interface GameInfo {
@@ -39,46 +33,42 @@ class SerializeHelper {
 }
 
 export default () => {
-    var foo = SerializeHelper.GetGameInfo(JSON.stringify(GamesInfoJSON));
-    console.warn(foo[0].title);
+    var games = SerializeHelper.GetGameInfo(JSON.stringify(GamesInfoJSON));
 
-    const [props, setProps] = useState<Props>({
-        photos: [
-            {
-                src: "https://i.ibb.co/2tMbWBC/15732668-1216018278480050-1964737736489139844-o.png",
-                altText: ""
-            },
-            {
-                src: "https://i.ibb.co/2tMbWBC/15732668-1216018278480050-1964737736489139844-o.png",
-                altText: ""
-            }
-        ],
-        title: "El MO",
-        description: "Juegazo",
-        link: "conchatumadre.com"
-    })
-
+    const [activeGameIndex, setActiveGameIndex] = useState(0)
     const [activeIndex, setActiveIndex] = useState(0);
     const [animating, setAnimating] = useState(false);
 
-    const next = () => {
+    const previousGame = () => {
+        const nextIndex = activeGameIndex === 0 ? games.length - 1 : activeGameIndex - 1;
+        setActiveIndex(0);
+        setActiveGameIndex(nextIndex);
+    }
+
+    const nextGame = () => {
+        setActiveIndex(0);
+        const nextIndex = activeGameIndex === games.length - 1 ? 0 : activeGameIndex + 1
+        setActiveGameIndex(nextIndex)
+    }
+
+    const nextPhoto = () => {
         if (animating) return;
-        const nextIndex = activeIndex === props.photos.length - 1 ? 0 : activeIndex + 1;
+        const nextIndex = activeIndex === games[activeGameIndex].photos.length - 1 ? 0 : activeIndex + 1;
         setActiveIndex(nextIndex);
     }
 
-    const previous = () => {
+    const previousPhoto = () => {
         if (animating) return;
-        const nextIndex = activeIndex === 0 ? props.photos.length - 1 : activeIndex - 1;
+        const nextIndex = activeIndex === 0 ? games[activeGameIndex].photos.length - 1 : activeIndex - 1;
         setActiveIndex(nextIndex);
     }
 
-    const goToIndex = (newIndex) => {
+    const goToIndexPhoto = (newIndex) => {
         if (animating) return;
         setActiveIndex(newIndex);
     }
 
-    const slides = props.photos.map((item) => {
+    const slides = games[activeGameIndex].photos.map((item) => {
         return (
             <CarouselItem
                 onExiting={() => setAnimating(true)}
@@ -93,26 +83,32 @@ export default () => {
 
     return (
         <div className="page">
+            <Button
+                onClick={previousGame}
+            >Previous</Button>
+            <Button
+                onClick={nextGame}
+            >Next</Button>
             <div className="main-content">
                 <div className="title">
-                    <h1>{props.title}</h1>
+                    <h1>{games[activeGameIndex].title}</h1>
                 </div>
                 <div className="page-description">
-                    <h2>{props.description}</h2>
+                    <h2>{games[activeGameIndex].description}</h2>
                 </div>
                 <div className="carousel">
                     <Carousel
                         activeIndex={activeIndex}
-                        next={next}
-                        previous={previous}
+                        next={nextPhoto}
+                        previous={previousPhoto}
                         interval={false}
                         allowFullScreen={true}
                         allowTransparency={true}
                     >
-                        <CarouselIndicators items={props.photos} activeIndex={activeIndex} onClickHandler={goToIndex} />
+                        <CarouselIndicators items={games[activeGameIndex].photos} activeIndex={activeIndex} onClickHandler={goToIndexPhoto} />
                         {slides}
-                        <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-                        <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+                        <CarouselControl direction="prev" directionText="Previous" onClickHandler={previousPhoto} />
+                        <CarouselControl direction="next" directionText="Next" onClickHandler={nextPhoto} />
                     </Carousel>
                 </div>
                 <div className="buttons">
@@ -120,7 +116,7 @@ export default () => {
                         <ButtonMulti
                             color="primary"
                             label="Download"
-                            link={props.link}
+                            link={games[activeGameIndex].link}
                         ></ButtonMulti>
                     </div>
                 </div>
