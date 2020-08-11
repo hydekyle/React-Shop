@@ -8,7 +8,9 @@ import {
     CarouselControl,
     CarouselIndicators,
     CarouselCaption,
-    Button
+    Button,
+    Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle,
 } from 'reactstrap'
 import GamesInfoJSON from '../../GamesInfo.json'
 
@@ -19,6 +21,7 @@ interface photo {
 
 interface GameInfo {
     photos: photo[]
+    iconURL: string
     title: string
     description: string
     link: string
@@ -83,35 +86,19 @@ export default () => {
 
     return (
         <div className="page">
-            <Button
-                onClick={previousGame}
-            >Previous</Button>
-            <Button
-                onClick={nextGame}
-            >Next</Button>
+
             <div className="main-content">
                 <div className="title">
+                    <img src={games[activeGameIndex].iconURL} alt="" />
                     <h1>{games[activeGameIndex].title}</h1>
                 </div>
-                <div className="page-description">
-                    <h2>{games[activeGameIndex].description}</h2>
-                </div>
-                <div className="carousel">
-                    <Carousel
-                        activeIndex={activeIndex}
-                        next={nextPhoto}
-                        previous={previousPhoto}
-                        interval={false}
-                        allowFullScreen={true}
-                        allowTransparency={true}
-                    >
-                        <CarouselIndicators items={games[activeGameIndex].photos} activeIndex={activeIndex} onClickHandler={goToIndexPhoto} />
-                        {slides}
-                        <CarouselControl direction="prev" directionText="Previous" onClickHandler={previousPhoto} />
-                        <CarouselControl direction="next" directionText="Next" onClickHandler={nextPhoto} />
-                    </Carousel>
-                </div>
                 <div className="buttons">
+                    <Button
+                        onClick={previousGame}
+                    >Previous</Button>
+                    <Button
+                        onClick={nextGame}
+                    >Next</Button>
                     <div className="btn-descargar">
                         <ButtonMulti
                             color="primary"
@@ -120,6 +107,26 @@ export default () => {
                         ></ButtonMulti>
                     </div>
                 </div>
+                <div className="page-description">
+                    <h2>{games[activeGameIndex].description}</h2>
+                </div>
+                <div className="carousel">
+
+                    <Carousel
+                        activeIndex={activeIndex}
+                        next={nextPhoto}
+                        previous={previousPhoto}
+                        interval={false}
+                        allowFullScreen={true}
+                        allowTransparency={false}
+                    >
+                        <CarouselIndicators items={games[activeGameIndex].photos} activeIndex={activeIndex} onClickHandler={goToIndexPhoto} />
+                        {slides}
+                        <CarouselControl direction="prev" directionText="Previous" onClickHandler={previousPhoto} />
+                        <CarouselControl direction="next" directionText="Next" onClickHandler={nextPhoto} />
+                    </Carousel>
+                </div>
+
                 <div className="page-details">
 
                 </div>

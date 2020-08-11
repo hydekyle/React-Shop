@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Button } from 'reactstrap'
+import { valuesIn } from 'lodash'
 
 enum buttonColor {
     primary = "primary",
@@ -18,7 +19,11 @@ export default (props: buttonProps) => {
             <Button
                 color={props.color}
                 size="lg"
-                onClick={() => window.location.href = props.link}
+                onClick={() => {
+                    console.log(props.link)
+                    var win = window.open(props.link, "_blank")
+                    win?.focus()
+                }}
             >{props.label}</Button>
         </div>
     )
