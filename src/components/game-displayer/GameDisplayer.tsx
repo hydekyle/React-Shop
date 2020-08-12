@@ -110,13 +110,6 @@ export default () => {
                 <div className="title">
                     <h1>{games[activeGameIndex].title}</h1>
                 </div>
-                <div className="btn-descargar">
-                    <ButtonMulti
-                        color="primary"
-                        label="Download"
-                        link={games[activeGameIndex].link}
-                    ></ButtonMulti>
-                </div>
                 <div className="page-description">
                     <h2>{games[activeGameIndex].description}</h2>
                 </div>
