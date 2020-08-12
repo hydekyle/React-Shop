@@ -71,6 +71,11 @@ export default () => {
         setActiveIndex(newIndex);
     }
 
+    const onIconClicked = () => {
+        var win = window.open(games[activeGameIndex].link, "_blank")
+        win?.focus()
+    }
+
     const slides = games[activeGameIndex].photos.map((item) => {
         return (
             <CarouselItem
@@ -78,7 +83,7 @@ export default () => {
                 onExited={() => setAnimating(false)}
                 key={item.src}
             >
-                <img src={item.src} alt={item.altText} />
+                <img src={item.src} alt={item.altText} width="100%" />
                 {/* <CarouselCaption captionText={item.caption} captionHeader={item.caption} /> */}
             </CarouselItem>
         );
@@ -88,8 +93,10 @@ export default () => {
         <div className="page">
 
             <div className="main-content">
+                <div className="icon">
+                    <img src={games[activeGameIndex].iconURL} alt="" onClick={onIconClicked} />
+                </div>
                 <div className="title">
-                    <img src={games[activeGameIndex].iconURL} alt="" />
                     <h1>{games[activeGameIndex].title}</h1>
                 </div>
                 <div className="buttons">
@@ -111,14 +118,10 @@ export default () => {
                     <h2>{games[activeGameIndex].description}</h2>
                 </div>
                 <div className="carousel">
-
                     <Carousel
                         activeIndex={activeIndex}
                         next={nextPhoto}
                         previous={previousPhoto}
-                        interval={false}
-                        allowFullScreen={true}
-                        allowTransparency={false}
                     >
                         <CarouselIndicators items={games[activeGameIndex].photos} activeIndex={activeIndex} onClickHandler={goToIndexPhoto} />
                         {slides}

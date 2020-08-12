@@ -20,7 +20,6 @@ export default (props: buttonProps) => {
                 color={props.color}
                 size="lg"
                 onClick={() => {
-                    console.log(props.link)
                     var win = window.open(props.link, "_blank")
                     win?.focus()
                 }}

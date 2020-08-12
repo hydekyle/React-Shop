@@ -4,11 +4,15 @@
             "title": "Askito Adventures",
             "iconURL": "https://i.ibb.co/KXVsdvR/Askito-Ico.jpg",
             "description": "Las aventuras de Askito la leyenda.",
-            "link": "www.facebook.com/elmisteriodelaoscuridad",
+            "link": "https://www.facebook.com/elmisteriodelaoscuridad",
             "photos": [
                 {
-                    "src": "https://i.ibb.co/wh9zqNR/unnamed.png",
-                    "altText": "Kraken vs Bird Online"
+                    "src": "https://i.ibb.co/sWCz0Qb/askito1.png",
+                    "altText": "Askito Catacumbas"
+                },
+                {
+                    "src": "https://i.ibb.co/091DWrX/ASKITO2.png",
+                    "altText": "Askito Demo"
                 }
             ]
         },
@@ -16,11 +20,15 @@
             "title": "Evolution",
             "iconURL": "https://i.ibb.co/tP9yH0W/Evo.png",
             "description": "Evoluciona monstruos y combate online.",
-            "link": "www.facebook.com/elmisteriodelaoscuridad",
+            "link": "https://www.facebook.com/elmisteriodelaoscuridad",
             "photos": [
                 {
-                    "src": "https://i.ibb.co/wh9zqNR/unnamed.png",
-                    "altText": "Kraken vs Bird Online"
+                    "src": "https://i.ibb.co/xFzrytD/3.png",
+                    "altText": "Evolution game"
+                },
+                {
+                    "src": "https://i.ibb.co/M6yqp11/6.png",
+                    "altText": "Evolution Dalas Galaxy"
                 }
             ]
         },
@@ -28,11 +36,19 @@
             "title": "Cricket Arcade",
             "iconURL": "https://i.ibb.co/KmGDzSF/Cricket.png",
             "description": "Kraken vs Bird",
-            "link": "www.facebook.com/elmisteriodelaoscuridad",
+            "link": "https://www.facebook.com/elmisteriodelaoscuridad",
             "photos": [
                 {
-                    "src": "https://i.ibb.co/wh9zqNR/unnamed.png",
-                    "altText": "Kraken vs Bird Online"
+                    "src": "https://i.ibb.co/t2j6rwj/2.png",
+                    "altText": "Cricket Arcade Captura"
+                },
+                {
+                    "src": "https://i.ibb.co/7YTX5jN/unnamed.png",
+                    "altText": "Cricket Arcade Captura"
+                },
+                {
+                    "src": "https://i.ibb.co/b7m88XB/unnamed.png",
+                    "altText": "Cricket Arcade Captura"
                 }
             ]
         },
@@ -40,10 +56,14 @@
             "title": "Kraken vs Bird",
             "iconURL": "https://i.ibb.co/VgDXBfP/Kraken-Ico.png",
             "description": "Kraken vs Bird",
-            "link": "www.facebook.com/elmisteriodelaoscuridad",
+            "link": "https://www.facebook.com/elmisteriodelaoscuridad",
             "photos": [
                 {
                     "src": "https://i.ibb.co/wh9zqNR/unnamed.png",
+                    "altText": "Kraken vs Bird Online"
+                },
+                {
+                    "src": "https://i.ibb.co/1f0WVVX/unnamed2.png",
                     "altText": "Kraken vs Bird Online"
                 }
             ]
@@ -52,7 +72,7 @@
             "title": "Impossible BipolarBall",
             "iconURL": "https://i.ibb.co/RTwm5PS/Bipolar.png",
             "description": "Alterna el color para atravesar obstáculos.",
-            "link": "www.facebook.com/elmisteriodelaoscuridad",
+            "link": "https://www.facebook.com/elmisteriodelaoscuridad",
             "photos": [
                 {
                     "src": "https://i.ibb.co/kgV4dkd/8.png",
@@ -68,7 +88,7 @@
             "title": "Space War Arcade",
             "iconURL": "https://i.ibb.co/h9rsFxX/SpaceIco.png",
             "description": "Arena espacial con enemigos infinitos.",
-            "link": "www.facebook.com/elmisteriodelaoscuridad",
+            "link": "https://www.facebook.com/elmisteriodelaoscuridad",
             "photos": [
                 {
                     "src": "https://lh3.googleusercontent.com/2OnrK3Fq5QKDH8TCPojBgRaNKd4GdltrLZEHxSiOGE3eOdrnXs0N8cgtMsS8K6Y2ir8",
@@ -89,10 +109,6 @@
                 {
                     "src": "https://i.ibb.co/2tMbWBC/15732668-1216018278480050-1964737736489139844-o.png",
                     "altText": "MO Remake"
-                },
-                {
-                    "src": "https://i.ibb.co/2tMbWBC/15732668-1216018278480050-1964737736489139844-o.png",
-                    "altText": "MO Calabozo"
                 }
             ]
         }

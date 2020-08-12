@@ -4,16 +4,20 @@
 .main-content {
   display: flex;
   margin: auto;
-  padding-right: 5%;
-  padding-left: 5%;
   flex-flow: column;
   background: grey;
+  width: 100vw;
+  align-items: center;
+}
+.icon {
+  display: flex;
+  margin-top: 10px;
+  align-self: center;
+  box-shadow: black 4px 4px 12px 6px;
 }
 .title {
   color: #ff0000;
   text-align: center;
-  margin-left: 5%;
-  margin-right: 5%;
   padding-top: 10px;
   text-shadow: black 4px 4px;
 }
@@ -32,8 +36,7 @@
 .carousel {
   display: flex;
   align-self: center;
-  width: 640px;
-  height: 480px;
+  align-items: center;
   margin-bottom: 1em;
   margin-top: 1em;
 }
