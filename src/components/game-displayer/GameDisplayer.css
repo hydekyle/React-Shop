@@ -40,9 +40,21 @@
   margin-bottom: 1em;
   margin-top: 1em;
 }
-.buttons {
+.head-info {
+  display: flex;
+}
+.btn-left {
+  display: flex;
+  flex-flow: row-reverse;
+  margin: auto;
+  margin-right: 40px;
+  height: 120px;
+}
+.btn-right {
   display: flex;
   margin: auto;
+  margin-left: 40px;
+  height: 120px;
 }
 .btn-descargar {
   margin-left: 2em;

@@ -91,28 +91,31 @@ export default () => {
 
     return (
         <div className="page">
-
             <div className="main-content">
-                <div className="icon">
-                    <img src={games[activeGameIndex].iconURL} alt="" onClick={onIconClicked} />
+                <div className="head-info">
+                    <div className="btn-left">
+                        <Button onClick={previousGame}>
+                            <i className="fas fa-arrow-left"></i>
+                        </Button>
+                    </div>
+                    <div className="icon">
+                        <img src={games[activeGameIndex].iconURL} alt="" onClick={onIconClicked} />
+                    </div>
+                    <div className="btn-right">
+                        <Button onClick={nextGame}>
+                            <i className="fas fa-arrow-right"></i>
+                        </Button>
+                    </div>
                 </div>
                 <div className="title">
                     <h1>{games[activeGameIndex].title}</h1>
                 </div>
-                <div className="buttons">
-                    <Button
-                        onClick={previousGame}
-                    >Previous</Button>
-                    <Button
-                        onClick={nextGame}
-                    >Next</Button>
-                    <div className="btn-descargar">
-                        <ButtonMulti
-                            color="primary"
-                            label="Download"
-                            link={games[activeGameIndex].link}
-                        ></ButtonMulti>
-                    </div>
+                <div className="btn-descargar">
+                    <ButtonMulti
+                        color="primary"
+                        label="Download"
+                        link={games[activeGameIndex].link}
+                    ></ButtonMulti>
                 </div>
                 <div className="page-description">
                     <h2>{games[activeGameIndex].description}</h2>
