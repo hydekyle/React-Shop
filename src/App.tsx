@@ -5,7 +5,6 @@ import { MainProvider } from './Context/ContextMain'
 import MainBar from './components/Navbar/Navbar'
 import LandingPage from './components/landing-page/LandingPage'
 import './App.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default () =>
   <div>
