@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react'
+import db from "../../Firebase"
 import ButtonMulti from '../button-multi/ButtonMulti'
 import {
     Carousel,
@@ -42,6 +43,12 @@ export default () => {
     const [activeGameIndex, setActiveGameIndex] = useState(0)
     const [activeIndex, setActiveIndex] = useState(0);
     const [animating, setAnimating] = useState(false);
+
+    useEffect(() => {
+        db.collection("Users").onSnapshot(snapshot => {
+            snapshot.docs.map(doc => console.log(doc.data()))
+        })
+    }, [])
 
     useEffect(() => {
         console.log("Nuevo index: " + activeGameIndex)
@@ -89,7 +96,12 @@ export default () => {
                 onExited={() => setAnimating(false)}
                 key={item.src}
             >
-                <img src={item.src} alt={item.altText} className="img-fluid" />
+                <img src={item.src} alt={item.altText} className="img-fluid"
+                    onClick={() => {
+                        let win = window.open(item.src)
+                        win?.focus()
+                    }}
+                />
                 {/* <CarouselCaption captionText={item.caption} captionHeader={item.caption} /> */}
             </CarouselItem>
         );
