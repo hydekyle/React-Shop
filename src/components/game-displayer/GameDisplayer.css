@@ -45,15 +45,28 @@
 }
 .page-details {
   margin-bottom: 1em;
+  height: 100px;
 }
 
 .main-content {
-  display: flex;
-  justify-content: space-between;
-  flex-flow: column;
-  background: grey;
-  width: 80vw;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column;
+    background: grey;
+    width: 75vw;
+    align-items: center;
+  }
+
+@media screen and (max-width: 800px)
+{
+  .main-content {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column;
+    background: grey;
+    width: 100vw;
+    align-items: center;
+  }
 }
 
 .carousel{

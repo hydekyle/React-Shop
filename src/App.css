@@ -9,7 +9,7 @@
 
 body {
   font-family: 'Oswald', sans-serif !important;
-  background: var(--colorBackground) !important;
+  background-image: url("https://thumbs.dreamstime.com/b/seamless-question-mark-background-mystery-pattern-72803317.jpg");
   color: var(--colorTextHeader) !important;
 }
 
