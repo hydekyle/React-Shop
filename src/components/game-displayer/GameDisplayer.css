@@ -1,9 +1,13 @@
 .icon {
   display: flex;
-  margin-top: 10px;
   align-self: center;
   box-shadow: black 4px 4px 12px 6px;
   width: 150px;
+  object-fit: contain;
+  margin: auto;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 10px;
 }
 .title {
   color: #ff0000;
@@ -31,13 +35,11 @@
   display: flex;
   flex-flow: row-reverse;
   margin: auto;
-  margin-right: 40px;
   height: 120px;
 }
 .btn-right {
   display: flex;
   margin: auto;
-  margin-left: 40px;
   height: 120px;
 }
 .btn-descargar {

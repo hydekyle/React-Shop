@@ -103,8 +103,8 @@ export default () => {
                         <i className="fas fa-arrow-left"></i>
                     </Button>
                 </div>
-                <div className="icon">
-                    <img src={games[activeGameIndex].iconURL} alt="" onClick={onIconClicked} />
+                <div>
+                    <img src={games[activeGameIndex].iconURL} alt="" onClick={onIconClicked} className="icon" />
                 </div>
                 <div className="btn-right">
                     <Button onClick={nextGame}>
