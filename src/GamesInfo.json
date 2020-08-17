@@ -103,12 +103,16 @@
         {
             "title": "El Misterio de la Oscuridad",
             "iconURL": "https://i.ibb.co/HKP9MWc/MoIco.png",
-            "description": "Ahí afuera acechan muchos peligros, ¿podrás lidiar con ellos?",
+            "description": "Ahí afuera acechan muchos peligros, ¿podrás lidiar con ellos? \n El Misterio de la Oscuridad es un juego de terror de mundo abierto, donde se esconden innumerables secretos. ¿Podrás encontrarlos todos?",
             "link": "https://www.facebook.com/elmisteriodelaoscuridad",
             "photos": [
                 {
                     "src": "https://i.ibb.co/2tMbWBC/15732668-1216018278480050-1964737736489139844-o.png",
                     "altText": "MO Remake"
+                },
+                {
+                    "src": "https://i.ibb.co/sjPCkTH/puente.png",
+                    "altText": "MO Puente Grande"
                 }
             ]
         }

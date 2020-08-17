@@ -6,22 +6,19 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    NavbarText
+    NavLink
 } from 'reactstrap';
+import './Navbar.css'
 
 const MainBar = (props) => {
+
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
 
     return (
-        <div>
-            <Navbar color="dark" light expand="md" dark={true}>
+        <div className="navbar-div">
+            <Navbar color="dark" light expand="md" dark={true} className="navbar-head">
                 <NavbarBrand href="/">Mistery Games</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>

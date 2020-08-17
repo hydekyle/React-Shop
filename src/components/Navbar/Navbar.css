@@ -1,0 +1,9 @@
+.navbar-div {
+  display: flex;
+  position: fixed;
+  width: 100vw;
+  z-index: 10;
+}
+.navbar-head {
+  width: 100%;
+}

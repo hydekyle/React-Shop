@@ -1,60 +1,9 @@
-.icon {
-  display: flex;
-  align-self: center;
-  box-shadow: black 4px 4px 12px 6px;
-  width: 150px;
-  object-fit: contain;
-  margin: auto;
-  margin-left: 40px;
-  margin-right: 40px;
-  margin-top: 10px;
-}
-.title {
-  color: #ff0000;
-  text-align: center;
-  padding-top: 10px;
-  text-shadow: black 4px 4px;
-}
-.page-description {
-  color: yellow;
-  text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-shadow: black 3px 3px;
-}
-.btn-entrar {
-  margin: auto;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-
-.head-info {
-  display: flex;
-}
-.btn-left {
-  display: flex;
-  flex-flow: row-reverse;
-  margin: auto;
-  height: 120px;
-}
-.btn-right {
-  display: flex;
-  margin: auto;
-  height: 120px;
-}
-.btn-descargar {
-  margin-left: 2em;
-}
-.page-details {
-  margin-bottom: 1em;
-  height: 100px;
-}
-
 .main-content {
     display: flex;
     justify-content: space-between;
     flex-flow: column;
     background: grey;
+    padding-top: 60px;
     width: 75vw;
     align-items: center;
   }
@@ -66,9 +15,69 @@
     justify-content: space-between;
     flex-flow: column;
     background: grey;
+    padding-top: 60px;
     width: 100vw;
     align-items: center;
   }
+}
+
+.icon {
+  display: flex;
+  align-self: center;
+  box-shadow: black 4px 4px 12px 6px;
+  width: 150px;
+  object-fit: contain;
+  margin: auto;
+  margin-left: 40px;
+  margin-right: 40px;
+  margin-top: 10px;
+}
+
+.title {
+  color: #ff0000;
+  text-align: center;
+  padding-top: 10px;
+  text-shadow: black 4px 4px;
+}
+
+.page-description {
+  color: yellow;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-shadow: black 3px 3px;
+}
+
+.btn-entrar {
+  margin: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.head-info {
+  display: flex;
+}
+
+.btn-left {
+  display: flex;
+  flex-flow: row-reverse;
+  margin: auto;
+  height: 120px;
+}
+
+.btn-right {
+  display: flex;
+  margin: auto;
+  height: 120px;
+}
+
+.btn-descargar {
+  margin-left: 2em;
+}
+
+.page-details {
+  margin-bottom: 1em;
+  height: 100px;
 }
 
 .carousel{
@@ -94,8 +103,7 @@
   opacity: 0;
   transition: opacity .75s ease-in-out;
 }
+
 .carousel-fade .carousel-item.active {
   opacity: 1;
 }
-
-

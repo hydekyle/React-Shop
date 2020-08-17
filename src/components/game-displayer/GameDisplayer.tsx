@@ -1,19 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, useEffect } from 'react'
 import db from "../../Firebase"
-import ButtonMulti from '../button-multi/ButtonMulti'
 import {
-    Carousel,
-    CarouselItem,
-    CarouselControl,
-    CarouselIndicators,
-    CarouselCaption,
-    Button,
-    Card, CardImg, CardText, CardBody,
-    CardTitle, CardSubtitle,
+    Carousel, CarouselItem, CarouselControl, CarouselIndicators,
+    Button
 } from 'reactstrap'
 import GamesInfoJSON from '../../GamesInfo.json'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './GameDisplayer.css'
 
 interface photo {
@@ -32,17 +24,17 @@ interface GameInfo {
 class SerializeHelper {
 
     static GetGameInfo(json: string): Array<GameInfo> {
-        var info: Array<GameInfo> = JSON.parse(json)["games"];
+        var info: Array<GameInfo> = JSON.parse(json)["games"]
         return info
     }
 }
 
 export default () => {
-    var games = SerializeHelper.GetGameInfo(JSON.stringify(GamesInfoJSON));
+    var games = SerializeHelper.GetGameInfo(JSON.stringify(GamesInfoJSON))
 
     const [activeGameIndex, setActiveGameIndex] = useState(0)
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [animating, setAnimating] = useState(false);
+    const [activeIndex, setActivePhotoIndex] = useState(0)
+    const [animating, setAnimating] = useState(false)
 
     useEffect(() => {
         db.collection("Users").onSnapshot(snapshot => {
@@ -55,32 +47,40 @@ export default () => {
     }, [activeGameIndex])
 
     const previousGame = () => {
-        const nextIndex = activeGameIndex === 0 ? games.length - 1 : activeGameIndex - 1;
-        setActiveIndex(0);
-        setActiveGameIndex(nextIndex);
+        setActivePhotoIndex(0)
+        const nextIndex = activeGameIndex === 0 ? games.length - 1 : activeGameIndex - 1
+        setActiveGame(nextIndex)
     }
 
     const nextGame = () => {
-        setActiveIndex(0);
+        setActivePhotoIndex(0)
         const nextIndex = activeGameIndex === games.length - 1 ? 0 : activeGameIndex + 1
-        setActiveGameIndex(nextIndex)
+        setActiveGame(nextIndex)
+    }
+
+    const setActiveGame = activeIndex => {
+        var newImage = new Image()
+        newImage.src = games[activeIndex].photos[0].src
+        newImage.onload = () => {
+            setActiveGameIndex(activeIndex)
+        }
     }
 
     const nextPhoto = () => {
-        if (animating) return;
-        const nextIndex = activeIndex === games[activeGameIndex].photos.length - 1 ? 0 : activeIndex + 1;
-        setActiveIndex(nextIndex);
+        if (animating) return
+        const nextIndex = activeIndex === games[activeGameIndex].photos.length - 1 ? 0 : activeIndex + 1
+        setActivePhotoIndex(nextIndex)
     }
 
     const previousPhoto = () => {
-        if (animating) return;
-        const nextIndex = activeIndex === 0 ? games[activeGameIndex].photos.length - 1 : activeIndex - 1;
-        setActiveIndex(nextIndex);
+        if (animating) return
+        const nextIndex = activeIndex === 0 ? games[activeGameIndex].photos.length - 1 : activeIndex - 1
+        setActivePhotoIndex(nextIndex)
     }
 
     const goToIndexPhoto = (newIndex) => {
-        if (animating) return;
-        setActiveIndex(newIndex);
+        if (animating) return
+        setActivePhotoIndex(newIndex)
     }
 
     const onIconClicked = () => {
@@ -104,8 +104,10 @@ export default () => {
                 />
                 {/* <CarouselCaption captionText={item.caption} captionHeader={item.caption} /> */}
             </CarouselItem>
-        );
-    });
+        )
+    })
+
+    let gameSelected = games[activeGameIndex]
 
     return (
         <div className="main-content">
@@ -116,7 +118,7 @@ export default () => {
                     </Button>
                 </div>
                 <div>
-                    <img src={games[activeGameIndex].iconURL} alt="" onClick={onIconClicked} className="icon" />
+                    <img src={gameSelected.iconURL} alt="" onClick={onIconClicked} className="icon" />
                 </div>
                 <div className="btn-right">
                     <Button onClick={nextGame}>
@@ -125,10 +127,10 @@ export default () => {
                 </div>
             </div>
             <div className="title">
-                <h1>{games[activeGameIndex].title}</h1>
+                <h1>{gameSelected.title}</h1>
             </div>
             <div className="page-description">
-                <h2>{games[activeGameIndex].description}</h2>
+                <h2>{gameSelected.description}</h2>
             </div>
             <div className="carousel">
                 <Carousel
@@ -141,7 +143,7 @@ export default () => {
                     slide={false}
                     className="carousel-fade"
                 >
-                    <CarouselIndicators items={games[activeGameIndex].photos} activeIndex={activeIndex} onClickHandler={goToIndexPhoto} />
+                    <CarouselIndicators items={gameSelected.photos} activeIndex={activeIndex} onClickHandler={goToIndexPhoto} />
                     {slides}
                     <CarouselControl direction="prev" directionText="Previous" onClickHandler={previousPhoto} />
                     <CarouselControl direction="next" directionText="Next" onClickHandler={nextPhoto} />
