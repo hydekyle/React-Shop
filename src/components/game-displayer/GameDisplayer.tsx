@@ -8,6 +8,9 @@ import GamesInfoJSON from '../../GamesInfo.json'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './GameDisplayer.css'
 
+import SocketIO from "socket.io-client"
+const ENDPOINT = "localhost:3000"
+
 interface photo {
     src: string
     altText: string
@@ -37,9 +40,24 @@ export default () => {
     const [animating, setAnimating] = useState(false)
 
     useEffect(() => {
+        const socket = SocketIO(ENDPOINT)
+        socket.on("FromAPI", data => {
+            console.log(data)
+        })
+        socket.on("connect", () => {
+            console.log("Socket connect")
+        })
+        socket.connect()
+
         db.collection("Users").onSnapshot(snapshot => {
             snapshot.docs.map(doc => console.log(doc.data()))
         })
+
+        return () => {
+            console.log("Unmount")
+            socket.disconnect()
+        }
+
     }, [])
 
     useEffect(() => {
