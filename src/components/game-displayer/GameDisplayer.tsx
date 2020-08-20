@@ -77,10 +77,17 @@ export default () => {
     }
 
     const setActiveGame = activeIndex => {
-        var newImage = new Image()
-        newImage.src = games[activeIndex].photos[0].src
-        newImage.onload = () => {
-            setActiveGameIndex(activeIndex)
+        var photoImage = new Image()
+        photoImage.src = games[activeIndex].photos[0].src
+
+        photoImage.onload = () => {
+
+            var iconoImage = new Image()
+            iconoImage.src = games[activeIndex].iconURL
+            iconoImage.onload = () => {
+                setActiveGameIndex(activeIndex)
+            }
+
         }
     }
 
