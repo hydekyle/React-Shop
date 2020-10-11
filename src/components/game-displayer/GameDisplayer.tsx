@@ -8,6 +8,9 @@ import GamesInfoJSON from '../../GamesInfo.json'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './GameDisplayer.css'
 
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
+
 import SocketIO from "socket.io-client"
 const ENDPOINT = "localhost:3000"
 
@@ -79,12 +82,14 @@ export default () => {
     const setActiveGame = activeIndex => {
         var photoImage = new Image()
         photoImage.src = games[activeIndex].photos[0].src
+        setAnimating(true)
 
         photoImage.onload = () => {
 
             var iconoImage = new Image()
             iconoImage.src = games[activeIndex].iconURL
             iconoImage.onload = () => {
+                setAnimating(false)
                 setActiveGameIndex(activeIndex)
             }
 
@@ -109,6 +114,7 @@ export default () => {
     }
 
     const onIconClicked = () => {
+        if (games[activeGameIndex].link === "") return
         var win = window.open(games[activeGameIndex].link, "_blank")
         win?.focus()
     }
@@ -117,8 +123,6 @@ export default () => {
         return (
             <CarouselItem
                 className="carousel-item"
-                onExiting={() => setAnimating(true)}
-                onExited={() => setAnimating(false)}
                 key={item.src}
             >
                 <img src={item.src} alt={item.altText} className="img-fluid"
@@ -132,26 +136,10 @@ export default () => {
         )
     })
 
-    let gameSelected = games[activeGameIndex]
-
-    return (
-        <div className="main-content">
-            <div className="head-info">
-                <div className="btn-left">
-                    <Button onClick={previousGame}>
-                        <i className="fas fa-arrow-left"></i>
-                    </Button>
-                </div>
-                <div>
-                    <img src={gameSelected.iconURL} alt="" onClick={onIconClicked} className="icon" />
-                </div>
-                <div className="btn-right">
-                    <Button onClick={nextGame}>
-                        <i className="fas fa-arrow-right"></i>
-                    </Button>
-                </div>
-            </div>
+    const gameInfoDisplay = () => {
+        if (!animating) return <div>
             <div className="title">
+
                 <h1>{gameSelected.title}</h1>
             </div>
             <div className="page-description">
@@ -174,6 +162,41 @@ export default () => {
                     <CarouselControl direction="next" directionText="Next" onClickHandler={nextPhoto} />
                 </Carousel>
             </div>
+        </div>
+        else {
+            return <div className="spin-loading">
+                <Loader
+                    type="Circles"
+                    color="#00BFFF"
+                    height={100}
+                    width={100}
+                    visible={animating}
+                    timeout={3000}
+                />
+            </div>
+        }
+    }
+
+    let gameSelected = games[activeGameIndex]
+
+    return (
+        <div className="main-content">
+            <div className="head-info">
+                <div className="btn-left">
+                    <Button onClick={previousGame}>
+                        <i className="fas fa-arrow-left"></i>
+                    </Button>
+                </div>
+                <div>
+                    <img src={gameSelected.iconURL} alt="Un juego de HydeKyle" onClick={onIconClicked} className="icon" />
+                </div>
+                <div className="btn-right">
+                    <Button onClick={nextGame}>
+                        <i className="fas fa-arrow-right"></i>
+                    </Button>
+                </div>
+            </div>
+            {gameInfoDisplay()}
             <div className="page-details">
             </div>
         </div>

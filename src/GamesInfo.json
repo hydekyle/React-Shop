@@ -3,8 +3,8 @@
         {
             "title": "Askito Adventures",
             "iconURL": "https://i.ibb.co/KXVsdvR/Askito-Ico.jpg",
-            "description": "Las aventuras de Askito la leyenda.",
-            "link": "https://www.facebook.com/elmisteriodelaoscuridad",
+            "description": "Las aventuras de Askito la leyenda. (Actualmente en desarrollo)",
+            "link": "",
             "photos": [
                 {
                     "src": "https://i.ibb.co/sWCz0Qb/askito1.png",
@@ -20,7 +20,7 @@
             "title": "Evolution",
             "iconURL": "https://i.ibb.co/tP9yH0W/Evo.png",
             "description": "Evoluciona monstruos y combate online.",
-            "link": "https://www.facebook.com/elmisteriodelaoscuridad",
+            "link": "https://drive.google.com/file/d/1DhBZ7DeWVILBx6DwM3Z4Va3ECHmbYkzY/view?usp=sharing",
             "photos": [
                 {
                     "src": "https://i.ibb.co/xFzrytD/3.png",
@@ -36,7 +36,7 @@
             "title": "Cricket Arcade",
             "iconURL": "https://i.ibb.co/KmGDzSF/Cricket.png",
             "description": "Descrémate bateando bolas y reventándo dianas.",
-            "link": "https://www.facebook.com/elmisteriodelaoscuridad",
+            "link": "https://play.google.com/store/apps/details?id=com.EternalGames.HydeBall",
             "photos": [
                 {
                     "src": "https://i.ibb.co/t2j6rwj/2.png",
@@ -56,7 +56,7 @@
             "title": "Kraken vs Bird",
             "iconURL": "https://i.ibb.co/VgDXBfP/Kraken-Ico.png",
             "description": "Juega online como el Kraken o como el pájaro.",
-            "link": "https://www.facebook.com/elmisteriodelaoscuridad",
+            "link": "https://apkpure.com/es/kraken-vs-bird/com.EternalGames.kraken",
             "photos": [
                 {
                     "src": "https://i.ibb.co/wh9zqNR/unnamed.png",
@@ -72,7 +72,7 @@
             "title": "Impossible BipolarBall",
             "iconURL": "https://i.ibb.co/RTwm5PS/Bipolar.png",
             "description": "Alterna el color para atravesar obstáculos.",
-            "link": "https://www.facebook.com/elmisteriodelaoscuridad",
+            "link": "https://apkpure.com/es/impossible-bipolarball/com.EternalGames.ImpossibleBipolarBall",
             "photos": [
                 {
                     "src": "https://i.ibb.co/kgV4dkd/8.png",
@@ -88,7 +88,7 @@
             "title": "Space War Arcade",
             "iconURL": "https://i.ibb.co/h9rsFxX/SpaceIco.png",
             "description": "Arena espacial con enemigos infinitos.",
-            "link": "https://www.facebook.com/elmisteriodelaoscuridad",
+            "link": "https://play.google.com/store/apps/details?id=com.EternalGames.naves",
             "photos": [
                 {
                     "src": "https://lh3.googleusercontent.com/2OnrK3Fq5QKDH8TCPojBgRaNKd4GdltrLZEHxSiOGE3eOdrnXs0N8cgtMsS8K6Y2ir8",

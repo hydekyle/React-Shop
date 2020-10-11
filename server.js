@@ -6,13 +6,14 @@ const app = express()
 
 app.set('port', process.env.PORT || 3000)
 
+// Servidor web
 app.use(express.static(path.join(__dirname, 'build')))
 
-const server = app.listen(app.get('port'), () => {
+const serverExpress = app.listen(app.get('port'), () => {
     console.log("Listening on " + app.get('port'))
 })
 
-const io = SocketIO(server)
+const io = SocketIO(serverExpress)
 
 io.on('connection', socket => {
     console.log("New Connection")
