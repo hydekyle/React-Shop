@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import db from "../../Firebase"
+// import db from "../../Firebase"
 import {
     Carousel, CarouselItem, CarouselControl, CarouselIndicators,
     Button
@@ -12,6 +12,8 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import Loader from 'react-loader-spinner'
 
 import SocketIO from "socket.io-client"
+import GamePlayer from "../GamePlayer/GamePlayer"
+
 const ENDPOINT = "localhost:3000"
 
 interface photo {
@@ -42,6 +44,8 @@ export default () => {
     const [activeIndex, setActivePhotoIndex] = useState(0)
     const [animating, setAnimating] = useState(false)
 
+    let gameSelected = games[activeGameIndex]
+
     useEffect(() => {
         const socket = SocketIO(ENDPOINT)
         socket.on("FromAPI", data => {
@@ -52,9 +56,9 @@ export default () => {
         })
         socket.connect()
 
-        db.collection("Users").onSnapshot(snapshot => {
-            snapshot.docs.map(doc => console.log(doc.data()))
-        })
+        // db.collection("Users").onSnapshot(snapshot => {
+        //     snapshot.docs.map(doc => console.log(doc.data()))
+        // })
 
         return () => {
             console.log("Unmount")
@@ -177,28 +181,29 @@ export default () => {
         }
     }
 
-    let gameSelected = games[activeGameIndex]
+    const gameSelector = () => {
+        return <div className="head-info">
+            <div className="btn-left">
+                <Button onClick={previousGame}>
+                    <i className="fas fa-arrow-left"></i>
+                </Button>
+            </div>
+            <div>
+                <img src={gameSelected.iconURL} alt="Un juego de HydeKyle" onClick={onIconClicked} className="icon" />
+            </div>
+            <div className="btn-right">
+                <Button onClick={nextGame}>
+                    <i className="fas fa-arrow-right"></i>
+                </Button>
+            </div>
+        </div>
+    }
 
     return (
         <div className="main-content">
-            <div className="head-info">
-                <div className="btn-left">
-                    <Button onClick={previousGame}>
-                        <i className="fas fa-arrow-left"></i>
-                    </Button>
-                </div>
-                <div>
-                    <img src={gameSelected.iconURL} alt="Un juego de HydeKyle" onClick={onIconClicked} className="icon" />
-                </div>
-                <div className="btn-right">
-                    <Button onClick={nextGame}>
-                        <i className="fas fa-arrow-right"></i>
-                    </Button>
-                </div>
-            </div>
+            {gameSelector()}
             {gameInfoDisplay()}
-            <div className="page-details">
-            </div>
+            {GamePlayer({ gameTitle: "Galaga" })}
         </div>
     )
 }
