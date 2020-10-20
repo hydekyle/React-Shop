@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | FreeGalaga</title>
+  </head>
+  <body style="text-align: center">
+    <canvas id="unity-canvas" style="width: 500px; height: 600px; background: #231F20"></canvas>
+    <script src="Build/40378010e70db83297107fd5e9ba8fbf.js"></script>
+    <script>
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/e0763639335a3aa641ac1b68428fa308.unityweb",
+        frameworkUrl: "Build/61c90cf94f17133cedef8a0d865a1f5b.unityweb",
+        codeUrl: "Build/24c62a4197ce45340844d155f88a5308.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "FreeGalaga",
+        productVersion: "1.0",
+      });
+    </script>
+  </body>
+</html>
