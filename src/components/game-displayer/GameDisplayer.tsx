@@ -203,7 +203,6 @@ export default () => {
         <div className="main-content">
             {gameSelector()}
             {gameInfoDisplay()}
-            {GamePlayer({ gameTitle: "Galaga" })}
         </div>
     )
 }
