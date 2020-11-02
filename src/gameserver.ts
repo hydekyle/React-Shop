@@ -35,7 +35,7 @@ interface TweetData {
 
 interface ServerResponse {
     statusCode: number,
-    data: string
+    dataJSON: string
 }
 
 const config = {
@@ -99,11 +99,24 @@ const saveLastTweet = (tweetData: TweetData) => {
 
 //#endregion
 
-app.get('/', (req, res) => {
-    let response: ServerResponse = {
-        statusCode: 0,
-        data: JSON.stringify(saved_accounts[saved_accounts.length - 1])
+app.get('/:id', (req, res) => {
+    let params = req.params;
+    console.log(`Hola ${params.id}`);
+
+    let response: ServerResponse;
+
+    if (saved_accounts.length === 0) {
+        response = {
+            statusCode: 0,
+            dataJSON: ""
+        }
+    } else {
+        response = {
+            statusCode: 1,
+            dataJSON: JSON.stringify(saved_accounts[saved_accounts.length - 1])
+        }
     }
+
     res.send(JSON.stringify(response))
 })
 

@@ -33,7 +33,7 @@ interface TweetData {
 }
 
 const config = {
-  tweets_filter: "dalasreview",
+  tweets_filter: "follow4follow",
 
   paid_link: "https://mistery.games/free-spotify-US",
 
@@ -42,14 +42,14 @@ const config = {
   countries_filter: ["us", "usa", "united states", "new york", "america"],
   countryFilter: false,
 
-  replyTweet: true, //Careful spam
+  replyTweet: false, //Careful spam
 
   dontRepeatSameUser: true,
 
-  followTweetOwner: false,
-  muteAfterFollow: false,
+  followTweetOwner: true,
+  muteAfterFollow: true,
 
-  followIntervalMinutes: 2,
+  followIntervalMinutes: 4,
   replyIntervalMinutes: 1, //Askito: 1
 }
 
@@ -150,8 +150,10 @@ twitter.stream("statuses/filter", { track: config.tweets_filter }, stream => {
 
 const handleIncomingTweet = tweet => {
   if (config.showTweet) showTweet(tweet)
-  if (!isNameWithPambi(tweet.user.name)) return
-  if (!checkCountry(tweet)) return
+  if (!config.followTweetOwner) {
+    if (!isNameWithPambi(tweet.user.name)) return
+    if (!checkCountry(tweet)) return
+  }
   saveLastTweet({
     userID: tweet.user.id,
     screen_name: tweet.user.screen_name,
@@ -220,7 +222,33 @@ const toReply = (tweetData: TweetData) => {
 const toFollow = (tweetData: TweetData) => {
   twitter.post("friendships/create", { screen_name: tweetData.screen_name }, (error, response) => {
     if (error) console.warn(error)
-    else if (config.muteAfterFollow) toMute(tweetData.screen_name)
+    else {
+      setTimeout(() => {
+        checkForFollowBack(tweetData.userID)
+      }, 60000 * 20);
+      if (config.muteAfterFollow) toMute(tweetData.screen_name)
+    }
+  })
+}
+
+const checkForFollowBack = (followerID: number) => {
+  twitter.get("followers/ids", {}, (error, response) => {
+    if (error) {
+      console.warn(error)
+      return
+    }
+    followers_ids = response.ids
+
+    if (!checkIfFollower(followerID)) {
+      twitter.post("friendships/destroy", { user_id: followerID }, (errorF, responseF) => {
+        if (errorF) {
+          console.warn(errorF)
+        } else {
+          console.log("Waneado por no seguirme " + responseF.screen_name)
+        }
+      })
+    }
+
   })
 }
 
@@ -247,7 +275,7 @@ const saveMyFollowers = () => {
 
 const checkIfFollower = (id: number) => {
   for (let followerID of followers_ids)
-    if (followerID == id) return true
+    if (followerID === id) return true
   return false
 }
 
