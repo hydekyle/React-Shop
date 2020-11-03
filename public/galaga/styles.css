@@ -1,0 +1,16 @@
+html {
+    background-color: black;
+}
+
+.input_username {
+    color:red;
+}
+
+.red-bordered {
+    border-style: dotted;
+    border-color: red;
+}
+
+.hidden {
+    visibility: hidden;
+}

@@ -4,20 +4,39 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | FreeGalaga</title>
+    <link rel="stylesheet" href="./styles.css">
   </head>
+  <div id="login_form" class="hidden">
+    <h2 id="display_username">Introduce tu nickname:</h2>
+    <input type="text" value="" class="" id="input_username" onkeydown="if (event.keyCode == 13) SetUsername()"/>
+    <button onclick="SetUsername()">Play</button>
+  </div>
   <body style="text-align: center">
     <canvas id="unity-canvas" style="width: 500px; height: 600px; background: #231F20"></canvas>
     <script src="Build/40378010e70db83297107fd5e9ba8fbf.js"></script>
     <script>
-      createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/544d1a328c03047a8d0fd7a9556f308b.unityweb",
-        frameworkUrl: "Build/26dee83d2b5395a4fe3acdd81d8a4a23.unityweb",
-        codeUrl: "Build/4f0ea49cb572a6bc842533ee383fc05b.unityweb",
+      let unityInstance = createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/3768419896b551c3359714698e770fff.unityweb",
+        frameworkUrl: "Build/7f330900010456221ed53869161b0a69.unityweb",
+        codeUrl: "Build/206d665d4166479d0407f7483c257964.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "FreeGalaga",
         productVersion: "1.0",
-      });
+        });  
+
+      function ShowLogin () {
+        document.getElementById("login_form").className = ""
+      }
+      function SetUsername () {
+        let inputField = document.getElementById("input_username")
+        let name = inputField.value
+        if (name === "") inputField.className = "red-bordered"
+        else {
+          document.getElementById("login_form").className = "hidden"
+          unityInstance.then(result => result.SendMessage('[GameManager]', 'SetUsername', name))
+        }
+      }
     </script>
   </body>
 </html>
