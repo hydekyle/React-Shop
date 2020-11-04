@@ -1,5 +1,5 @@
 <?php
-    define('DB_NAME', 'mktlogic_game_test');
+    define('DB_NAME', 'db');
     define('DB_USER', 'mktlogic_game_ad');
     define('DB_PASSWORD', 'eM93bn#6');
     define('DB_HOST', 'localhost');
