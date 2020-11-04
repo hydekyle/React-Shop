@@ -17,16 +17,18 @@
 
     if (!$resultado = $mysqli->query($get_user_query)) die("Error de consulta");
 
-    echo $resultado->num_rows;
+
 
     if ($resultado->num_rows === 0) {
         if ($inserted_user = $mysqli->query($insert_user_query)) {
             die("Nuevo usuario guardado");
         }
     } else {
-        if ($updated_user = $mysqli->query($update_user_query)){
-            die("Usuario Updated");
-        }
+        $storedUser = $resultado->fetch_assoc();
+	if ($storedUser["points"] < $points) {
+		if ($updated_user = $mysqli->query($update_user_query)) die ("Usuario Updated");
+	}else die ("Record no superado");
+
     }
 
 ?>
