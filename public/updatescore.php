@@ -17,8 +17,6 @@
 
     if (!$resultado = $mysqli->query($get_user_query)) die("Error de consulta");
 
-
-
     if ($resultado->num_rows === 0) {
         if ($inserted_user = $mysqli->query($insert_user_query)) {
             die("Nuevo usuario guardado");
