@@ -1,22 +1,6 @@
 {
     "games": [
         {
-            "title": "Askito Adventures",
-            "iconURL": "https://i.ibb.co/KXVsdvR/Askito-Ico.jpg",
-            "description": "Las aventuras de Askito la leyenda. (Actualmente en desarrollo)",
-            "link": "http://www.mediafire.com/file/a9isdz2ksxsp5pd/AskitoGameV0.apk/file",
-            "photos": [
-                {
-                    "src": "https://i.ibb.co/sWCz0Qb/askito1.png",
-                    "altText": "Askito Catacumbas"
-                },
-                {
-                    "src": "https://i.ibb.co/091DWrX/ASKITO2.png",
-                    "altText": "Askito Demo"
-                }
-            ]
-        },
-        {
             "title": "Evolution",
             "iconURL": "https://i.ibb.co/tP9yH0W/Evo.png",
             "description": "Evoluciona monstruos y combate online.",
