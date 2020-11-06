@@ -6,35 +6,75 @@
     <title>Unity WebGL Player | FreeGalaga</title>
     <link rel="stylesheet" href="./styles.css">
   </head>
-  <div id="login_form" class="hidden">
-    <h2 id="display_username">Introduce tu nickname:</h2>
-    <input type="text" value="" class="" id="input_username" onkeydown="if (event.keyCode == 13) SetUsername()"/>
-    <button onclick="SetUsername()">Play</button>
-  </div>
+  
   <body style="text-align: center">
-    <canvas id="unity-canvas" style="width: 500px; height: 600px; background: #231F20"></canvas>
+
+    <div class="container">
+      <div class="left-container">
+        <div id="login_form" class="hidden">
+          <h2 id="display_username">Introduce tu nickname:</h2>
+          <input type="text" value="" class="input-username" id="input-username" onkeydown="if (event.keyCode == 13) SetUsername()" />
+          <button onclick="SetUsername()" class="button">Play</button>
+        </div>
+        <div class="spacer">
+
+        </div>
+        <div id="unity-footer">
+          <div id="unity-webgl-logo"></div>
+          <button id="unity-fullscreen-button" class="button">Full Screen</button>
+        </div>
+      </div>
+
+      <div class="right-container">
+        <canvas id="unity-canvas" style="width: 500px; height: 600px; background: #231F20"></canvas>
+      </div>
+    </div>
+
     <script src="Build/0104feaa844542c152ed4a10e108f054.js"></script>
     <script>
-      let unityInstance = createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/c6654fd783a51f81eabd3aaa22a91544.unityweb",
-        frameworkUrl: "Build/776bc75f09f5fec699acef4ccc1f9ba8.unityweb",
-        codeUrl: "Build/6c33e7e411081615ca636281bfc72fcb.unityweb",
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/0104feaa844542c152ed4a10e108f054.js";
+      let unityInstance;
+
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: buildUrl + "/7c2847d15beb7e7c5ed8f9069d24c927.unityweb",
+        frameworkUrl: buildUrl + "/6b1d9a83af90f46fc6e2ee8cccd098fb.unityweb",
+        codeUrl: buildUrl + "/51d64c830cbaad047550f48ed068bb15.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "FreeGalaga",
         productVersion: "1.0",
-        });  
+        }).then((uInstance) => {
+          unityInstance = uInstance;
+          fullscreenButton.onclick = () => {
+            uInstance.SetFullscreen(1);
+          };
+        }) 
+
+        var container = document.querySelector("#unity-container");
+          var canvas = document.querySelector("#unity-canvas");
+          var loadingBar = document.querySelector("#unity-loading-bar");
+          var progressBarFull = document.querySelector("#unity-progress-bar-full");
+          var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+
+          if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+            container.className = "unity-mobile";
+            config.devicePixelRatio = 1;
+          } else {
+            canvas.style.width = "500px";
+            canvas.style.height = "600px";
+          }
 
       function ShowLogin () {
         document.getElementById("login_form").className = ""
       }
       function SetUsername () {
-        let inputField = document.getElementById("input_username")
+        let inputField = document.getElementById("input-username")
         let name = inputField.value
         if (name === "") inputField.className = "red-bordered"
         else {
           document.getElementById("login_form").className = "hidden"
-          unityInstance.then(result => result.SendMessage('[GameManager]', 'SetUsername', name))
+          unityInstance?.SendMessage('[GameManager]', 'SetUsername', name)
         }
       }
     </script>
