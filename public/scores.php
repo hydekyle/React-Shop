@@ -15,7 +15,7 @@
 
     if ($resultado->num_rows > 0) {
         while ($fila = $resultado->fetch_row()) {
-            echo "$fila[0]:$fila[2]|";
+            echo "$fila[0]·$fila[2]·$fila[4]|";
         }
     }
     
