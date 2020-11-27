@@ -39,10 +39,10 @@
   const buildUrl = "Build";
   const loaderUrl = buildUrl + "/9dbd1c16c82a2585ad10ce7868c04a93.js";
   const config = {
-    dataUrl: buildUrl + "/34ccfe0b278b7b6612faba44f54f2e0c.unityweb",
-    frameworkUrl: buildUrl + "/1f974892a8e6b64ad406863017e8e2b1.unityweb",
-    codeUrl: buildUrl + "/69c6f0b0ed1c3e82007b95125d50b307.unityweb",
-        streamingAssetsUrl: "StreamingAssets",
+    dataUrl: buildUrl + "/c0b2189fcc37f7e2768b1965774c67a9.unityweb",
+    frameworkUrl: buildUrl + "/50450434fb850af2ade38a2f106febfc.unityweb",
+    codeUrl: buildUrl + "/0d362d99b983dcb5d5e02ec426347936.unityweb",
+    streamingAssetsUrl: "StreamingAssets",
     companyName: "DefaultCompany",
     productName: "FreeGalaga",
     productVersion: "1.0",
@@ -111,6 +111,7 @@
     if (name === "") inputField.className = "red-bordered"
     else {
       document.getElementById("login_form").className = "hidden"
+      document.cookie = "hydecookie=John Wick"
       unityInstance?.SendMessage('[GameManager]', 'SetUsername', name)
     }
   }

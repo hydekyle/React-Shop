@@ -1,4 +1,5 @@
 <?php
+    header("Access-Control-Allow-Origin: *");
     define('DB_NAME', 'db');
     define('DB_USER', 'mktlogic_game_ad');
     define('DB_PASSWORD', 'eM93bn#6');
