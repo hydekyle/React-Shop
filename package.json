@@ -5,6 +5,7 @@
   "dependencies": {
     "bootstrap": "^4.4.1",
     "cors": "^2.8.5",
+    "iohook": "^0.6.6",
     "lodash": "^4.17.15",
     "mongodb": "^3.5.4",
     "mongoose": "^5.9.2",
@@ -15,6 +16,7 @@
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
+    "robotjs": "^0.6.0",
     "ts-node": "^8.6.2",
     "twitter": "^1.7.1"
   },
@@ -48,7 +50,7 @@
     "@types/compression": "^1.7.0",
     "@types/enzyme": "^3.10.5",
     "@types/enzyme-adapter-react-16": "^1.0.6",
-    "@types/express": "^4.17.2",
+    "@types/express": "^4.17.9",
     "@types/jest": "^25.1.3",
     "@types/lodash": "^4.14.149",
     "@types/mongodb": "^3.3.16",
