@@ -11,9 +11,7 @@
 </head>
 
 <body>
-  <button onclick="compartirEnFacebook()">Compartir en FB</button>
   <div id="unity-fullscreen-button" style="display: none;"></div>
-  </div>
 
   <div id="unity-container" class="unity-desktop">
     <canvas id="unity-canvas" style="padding: 0px; position: absolute; height:100%; width:100%;"></canvas>
@@ -27,7 +25,6 @@
       <div class="spinner"></div>
     </div>
   </div>
-  </div>
 </body>
 
 <script>
@@ -40,25 +37,25 @@
     });
   };
 
-  function compartirEnFacebook() {
+  function compartirEnFacebook(puesto, puntos) {
     FB.ui({
       method: 'share',
       href: 'https://hydekyle.ga/galaga',
+      quote: `¡Voy en ${puesto}º puesto con ${puntos} puntos!`,
     }, function (response) { });
   }
 </script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-
 
 <script>
   const hideFullScreenButton = "";
   const buildUrl = "Build";
   const loaderUrl = buildUrl + "/9dbd1c16c82a2585ad10ce7868c04a93.js";
   const config = {
-    dataUrl: buildUrl + "/3cb691c1e79534a2a8358058d7829ecc.unityweb",
-    frameworkUrl: buildUrl + "/a1ab56579c012370c3ee8c20481dd62c.unityweb",
-    codeUrl: buildUrl + "/9d8a686ef83ce64954c93fdee59c98f7.unityweb",
-    streamingAssetsUrl: "StreamingAssets",
+    dataUrl: buildUrl + "/fdd69847bbaeb298bf342cae7a49887c.unityweb",
+    frameworkUrl: buildUrl + "/ec25dbedfe4f961968593df9782e027c.unityweb",
+    codeUrl: buildUrl + "/70697185f528dd4aa0d0cb634c2ae4ec.unityweb",
+        streamingAssetsUrl: "StreamingAssets",
     companyName: "DefaultCompany",
     productName: "FreeGalaga",
     productVersion: "1.0",
