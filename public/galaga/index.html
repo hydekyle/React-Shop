@@ -10,22 +10,44 @@
   <link rel="stylesheet" href="./TemplateData/style.css">
 </head>
 
-<div id="unity-fullscreen-button" style="display: none;"></div>
-</div>
-
-<div id="unity-container" class="unity-desktop">
-  <canvas id="unity-canvas" style="padding: 0px; position: absolute; height:100%; width:100%;"></canvas>
-</div>
-<div id="loading-cover" style="display:none;">
-  <div id="unity-loading-bar">
-    <div id="unity-logo"><img src="logo.png"></div>
-    <div id="unity-progress-bar-empty" style="display: none;">
-      <div id="unity-progress-bar-full"></div>
-    </div>
-    <div class="spinner"></div>
+<body>
+  <button onclick="compartirEnFacebook()">Compartir en FB</button>
+  <div id="unity-fullscreen-button" style="display: none;"></div>
   </div>
-</div>
-</div>
+
+  <div id="unity-container" class="unity-desktop">
+    <canvas id="unity-canvas" style="padding: 0px; position: absolute; height:100%; width:100%;"></canvas>
+  </div>
+  <div id="loading-cover" style="display:none;">
+    <div id="unity-loading-bar">
+      <div id="unity-logo"><img src="logo.png"></div>
+      <div id="unity-progress-bar-empty" style="display: none;">
+        <div id="unity-progress-bar-full"></div>
+      </div>
+      <div class="spinner"></div>
+    </div>
+  </div>
+  </div>
+</body>
+
+<script>
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: '670721590279787',
+      autoLogAppEvents: true,
+      xfbml: true,
+      version: 'v9.0'
+    });
+  };
+
+  function compartirEnFacebook() {
+    FB.ui({
+      method: 'share',
+      href: 'https://hydekyle.ga/galaga',
+    }, function (response) { });
+  }
+</script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
 
 <script>
@@ -36,7 +58,7 @@
     dataUrl: buildUrl + "/3cb691c1e79534a2a8358058d7829ecc.unityweb",
     frameworkUrl: buildUrl + "/a1ab56579c012370c3ee8c20481dd62c.unityweb",
     codeUrl: buildUrl + "/9d8a686ef83ce64954c93fdee59c98f7.unityweb",
-        streamingAssetsUrl: "StreamingAssets",
+    streamingAssetsUrl: "StreamingAssets",
     companyName: "DefaultCompany",
     productName: "FreeGalaga",
     productVersion: "1.0",
