@@ -57,7 +57,7 @@ En <b>https://www.paloaltonetworks.com.mx/</b> encontrarás toda la información
 ¡Hasta la próxima batalla!
     ";
 
-    die ("$nivel1|$nivel2|$nivel3|$nivel4|$nivel5|$gameover");
+    die ("$historia|$nivel1|$nivel2|$nivel3|$nivel4|$nivel5|$gameover");
 
 
 ?>
