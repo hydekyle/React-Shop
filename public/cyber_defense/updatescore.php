@@ -1,7 +1,7 @@
 <?php
     header("Access-Control-Allow-Origin: *");
     
-    include config.php;
+    include "config.php";
 
     $alias = $_GET["alias"];
     $score = $_GET["score"];

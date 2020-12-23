@@ -1,5 +1,5 @@
 <?php
-    include config.php;
+    include "config.php";
 
     $table_name = "registro";
     $column_alias = "reg_alias";
