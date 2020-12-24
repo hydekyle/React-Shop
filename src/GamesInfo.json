@@ -2,17 +2,21 @@
     "games": [
         {
             "title": "Cyber Invader",
-            "iconURL": "https://i.ibb.co/tP9yH0W/Evo.png",
+            "iconURL": "https://i.ibb.co/cJX4Kw2/Boss-Lucifer.png",
             "description": "Un shoot'em up al más puro estilo retro, en la versión del cliente cada jugador tiene 3 intentos para alcanzar la máxima puntuación posible y ganar premios.",
             "link": "https://hydekyle.ga/cyber_defense/",
             "photos": [
                 {
-                    "src": "https://i.ibb.co/xFzrytD/3.png",
-                    "altText": "Evolution game"
+                    "src": "https://i.ibb.co/GHK0k9N/captura-1.png",
+                    "altText": "Cyber Invader game"
                 },
                 {
-                    "src": "https://i.ibb.co/M6yqp11/6.png",
-                    "altText": "Evolution Dalas Galaxy"
+                    "src": "https://i.ibb.co/6RdHFSD/captura-2.png",
+                    "altText": "Cyber Invader game"
+                },
+                {
+                    "src": "https://i.ibb.co/pzLg0tK/captura-3.png",
+                    "altText": "Cyber Invader game"
                 }
             ]
         },
@@ -28,7 +32,7 @@
                 },
                 {
                     "src": "https://i.ibb.co/M6yqp11/6.png",
-                    "altText": "Evolution Dalas Galaxy"
+                    "altText": "Evolution game"
                 }
             ]
         },

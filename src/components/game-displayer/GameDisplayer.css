@@ -26,6 +26,7 @@
   align-self: center;
   box-shadow: black 4px 4px 12px 6px;
   width: 150px;
+  height: 150px;
   object-fit: contain;
   margin: auto;
   margin-left: 40px;
@@ -84,6 +85,7 @@
   display: flex;
   position: relative;
   align-self: center;
+  margin: auto;
 }
 
 .carousel-item {
