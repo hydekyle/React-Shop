@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-flow: column;
+  padding-top: 80px;
+  font-size: larger;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: #fc6934;
+  text-shadow: 1px 1px 1px black;
+}
+
+.banner-button {
+  display: flex;
+}
