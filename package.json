@@ -11,6 +11,7 @@
     "mongoose": "^5.9.2",
     "morgan": "^1.9.1",
     "node-fetch": "^2.6.0",
+    "node-wav-player": "^0.2.0",
     "php": "^1.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -26,7 +27,8 @@
     "asko": "nodemon src/server.ts asko",
     "hyde": "nodemon src/server.ts hyde 8081",
     "gameserver": "nodemon src/gameserver.ts",
-    "phpserver": "nodemon src/db.ts"
+    "phpserver": "nodemon src/db.ts",
+    "hacks": "nodemon ./src/jokerman.js"
   },
   "eslintConfig": {
     "extends": "react-app"
