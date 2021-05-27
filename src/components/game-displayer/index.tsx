@@ -9,13 +9,13 @@ import {
 } from "reactstrap";
 import GamesInfoJSON from "../../GamesInfo.json";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./GameDisplayer.css";
+import "./styles.css";
 
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 
 import SocketIO from "socket.io-client";
-import GamePlayer from "../GamePlayer/GamePlayer";
+import GamePlayer from "../game-player";
 
 const ENDPOINT = "localhost:3000";
 

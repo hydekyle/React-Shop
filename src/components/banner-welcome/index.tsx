@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Collapse, CardBody, Card } from "reactstrap";
-import "./BannerWelcome.css";
+import "./styles.css";
 export default () => {
   const [IsOpen, SetIsOpen] = useState(true);
 

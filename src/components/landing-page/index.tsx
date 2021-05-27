@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import './LandingPage.css'
-import '../game-displayer/GameDisplayer'
-import GameDisplayer from '../game-displayer/GameDisplayer'
+import './styles.css'
+import '../game-displayer'
+import GameDisplayer from '../game-displayer'
 
 export default () => {
     return (

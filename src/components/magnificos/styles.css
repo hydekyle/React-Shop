@@ -1,0 +1,9 @@
+.page {
+    display: flex;
+    flex-flow: column;
+    margin: auto;
+    align-items: center;
+    background-color: grey;
+    border-color: aqua;
+    border: 10px dotted white;
+}
